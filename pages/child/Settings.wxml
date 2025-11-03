@@ -1,0 +1,99 @@
+<!--pages/child/Settings.wxml-->
+<view class="settings-container">
+  <!-- 用户信息区域 -->
+  <view class="user-info-section">
+    <view class="user-avatar">
+      <view wx:if="{{userInfo && userInfo.avatarUrl}}" class="avatar-placeholder">👤</view>
+      <view wx:else class="avatar-placeholder">👧</view>
+    </view>
+    <view class="user-details">
+      <view class="user-name">{{userInfo && userInfo.nickName ? userInfo.nickName : '小朋友'}}</view>
+      <view class="user-type">小学生用户</view>
+    </view>
+  </view>
+
+  <!-- 学习设置区域 -->
+  <view class="settings-section">
+    <view class="section-title">学习设置</view>
+    
+    <!-- 声音设置 -->
+    <view class="setting-item">
+      <view class="setting-label">
+        <view class="setting-icon">🔊</view>
+        <text>声音效果</text>
+      </view>
+      <switch checked="{{studySettings.sound}}" bindchange="toggleSound" color="#4ecdc4" />
+    </view>
+    
+    <!-- 音乐设置 -->
+    <view class="setting-item">
+      <view class="setting-label">
+        <view class="setting-icon">🎵</view>
+        <text>背景音乐</text>
+      </view>
+      <switch checked="{{studySettings.music}}" bindchange="toggleMusic" color="#4ecdc4" />
+    </view>
+    
+    <!-- 通知设置 -->
+    <view class="setting-item">
+      <view class="setting-label">
+        <view class="setting-icon">🔔</view>
+        <text>学习提醒</text>
+      </view>
+      <switch checked="{{studySettings.notifications}}" bindchange="toggleNotifications" color="#4ecdc4" />
+    </view>
+  </view>
+
+  <!-- 难度设置区域 -->
+  <view class="settings-section">
+    <view class="section-title">难度设置</view>
+    <view class="difficulty-options">
+      <view 
+        wx:for="{{difficulties}}" 
+        wx:key="value"
+        class="difficulty-option {{studySettings.difficulty === item.value ? 'active' : ''}}"
+        data-difficulty="{{item.value}}"
+        bindtap="changeDifficulty"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 其他操作区域 -->
+  <view class="settings-section">
+    <view class="section-title">其他操作</view>
+    
+    <!-- 家长管理 -->
+    <view class="action-item" bindtap="switchToParentMode">
+      <view class="action-label">
+        <view class="action-icon">👪</view>
+        <text>家长管理</text>
+      </view>
+      <view class="action-arrow">›</view>
+    </view>
+    
+    <!-- 清除缓存 -->
+    <view class="action-item" bindtap="clearCache">
+      <view class="action-label">
+        <view class="action-icon">🗑️</view>
+        <text>清除缓存</text>
+      </view>
+      <view class="action-arrow">›</view>
+    </view>
+    
+    <!-- 关于我们 -->
+    <view class="action-item" bindtap="aboutUs">
+      <view class="action-label">
+        <view class="action-icon">ℹ️</view>
+        <text>关于我们</text>
+      </view>
+      <view class="action-arrow">›</view>
+    </view>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="version-info">
+    萌豆语文动画屋 v1.0.0
+  </view>
+</view>

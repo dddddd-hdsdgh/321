@@ -1,0 +1,50 @@
+<!--pages/child/HanziStory.wxml-->
+<view class="hanzi-story-container">
+  <!-- 页面标题 -->
+  <view class="page-title">
+    <text>汉字的故事</text>
+  </view>
+
+  <!-- 汉字列表 -->
+  <view class="hanzi-list">
+    <view wx:for="{{hanziStories}}" wx:key="id" class="hanzi-item" data-id="{{item.id}}" bindtap="viewHanziDetail">
+      <view class="hanzi-character">{{item.character}}</view>
+      <view class="hanzi-info">
+        <view class="hanzi-pinyin">{{item.pinyin}}</view>
+        <view class="hanzi-meaning">{{item.meaning}}</view>
+        <view class="hanzi-strokes">笔画: {{item.strokes}}</view>
+      </view>
+      <view class="hanzi-arrow">›</view>
+    </view>
+  </view>
+
+  <!-- 汉字故事详情弹窗 -->
+  <view class="detail-modal" wx:if="{{showDetail}}">
+    <view class="modal-content">
+      <view class="modal-header">
+        <view class="detail-character">{{selectedHanzi.character}}</view>
+        <view class="close-btn" bindtap="closeDetail">✕</view>
+      </view>
+      
+      <view class="modal-body">
+        <view class="detail-pinyin">{{selectedHanzi.pinyin}}</view>
+        <view class="detail-meaning">{{selectedHanzi.meaning}}</view>
+        
+        <view class="story-section">
+          <view class="section-title">汉字的故事</view>
+          <view class="story-content">{{selectedHanzi.story}}</view>
+        </view>
+        
+        <view class="evolution-section">
+          <view class="section-title">字形演变</view>
+          <view class="evolution-stages">
+            <view wx:for="{{selectedHanzi.evolution}}" wx:key="index" class="evolution-stage">
+              <view class="stage-name">{{item}}</view>
+              <view class="stage-placeholder">{{selectedHanzi.character}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

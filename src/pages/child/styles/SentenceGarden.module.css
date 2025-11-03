@@ -1,0 +1,370 @@
+.container {
+  padding: 2rem;
+  text-align: center;
+  background-color: #fdf2f8;
+  min-height: 100vh;
+}
+
+.container h1 {
+  color: #be185d;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 初始屏幕样式 */
+.initialScreen {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro {
+  font-size: 1.5rem;
+  color: #be185d;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #374151;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.modeButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modeButton {
+  background-color: #db2777;
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modeButton:hover {
+  background-color: #be185d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(219, 39, 119, 0.3);
+}
+
+/* 听听说说样式 */
+.listenScreen {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.listenHeader {
+  margin-bottom: 2rem;
+}
+
+.progressText {
+  background-color: #db2777;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.sentenceCard {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.sentenceText {
+  font-size: 2rem;
+  color: #be185d;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.sentenceImage {
+  margin-bottom: 1.5rem;
+}
+
+.placeholderImage {
+  width: 200px;
+  height: 150px;
+  background-color: #fbcfe8;
+  margin: 0 auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #be185d;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+.soundButton {
+  background-color: #db2777;
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.soundButton:hover {
+  background-color: #be185d;
+}
+
+.listenActions {
+  margin-top: 2rem;
+}
+
+.completeButton {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.completeButton:hover {
+  background-color: #059669;
+}
+
+/* 句子排列样式 */
+.rearrangeScreen {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.rearrangeHeader {
+  margin-bottom: 2rem;
+}
+
+.hintText {
+  display: block;
+  margin-top: 1rem;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.userSentenceContainer {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.userSentenceContainer h3, .wordsPoolContainer h3 {
+  color: #be185d;
+  margin-bottom: 1rem;
+}
+
+.userSentence {
+  min-height: 80px;
+  background-color: #fdf2f8;
+  border: 2px dashed #fbcfe8;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.emptySentence {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.sentenceWord {
+  background-color: #fbcfe8;
+  color: #be185d;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sentenceWord.incorrectWord {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: #be185d;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.3rem;
+}
+
+.correctMessage {
+  color: #10b981;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.correctAnswer {
+  color: #10b981;
+  font-size: 1.1rem;
+  background-color: #dcfce7;
+  padding: 0.8rem;
+  border-radius: 6px;
+}
+
+.wordsPoolContainer {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wordsPool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.wordButton {
+  background-color: #fbcfe8;
+  border: 2px solid #db2777;
+  color: #be185d;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.wordButton.selectable:hover {
+  background-color: #f9a8d4;
+}
+
+.wordButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submitButton {
+  background-color: #db2777;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #be185d;
+}
+
+/* 结果屏幕样式 */
+.resultScreen {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.resultScreen h2 {
+  color: #be185d;
+  margin-bottom: 1.5rem;
+}
+
+.resultStats {
+  margin-bottom: 2rem;
+}
+
+.resultStats p {
+  font-size: 1.2rem;
+  margin: 0.8rem 0;
+  color: #374151;
+}
+
+.playAgainButton {
+  background-color: #db2777;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.playAgainButton:hover {
+  background-color: #be185d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(219, 39, 119, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .container h1 {
+    font-size: 2rem;
+  }
+  
+  .sentenceText {
+    font-size: 1.8rem;
+  }
+  
+  .placeholderImage {
+    width: 180px;
+    height: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sentenceCard {
+    padding: 1.5rem;
+  }
+  
+  .sentenceText {
+    font-size: 1.6rem;
+  }
+  
+  .placeholderImage {
+    width: 150px;
+    height: 120px;
+    font-size: 1rem;
+  }
+  
+  .userSentence, .wordsPool {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .sentenceWord, .wordButton {
+    justify-content: center;
+  }
+}

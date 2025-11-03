@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "儿童学习主页",
+  "navigationBarBackgroundColor": "#4ecdc4",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f5f5f5",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}

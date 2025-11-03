@@ -1,0 +1,211 @@
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 30rpx 0;
+  color: #333;
+}
+
+/* 拼音类型选择 */
+.type-selector {
+  display: flex;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  padding: 10rpx;
+}
+
+.type-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  border-radius: 15rpx;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.type-item.active {
+  background-color: #07c160;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 得分显示 */
+.score-section {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.score-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.score-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #ff6b35;
+  margin: 0 20rpx;
+}
+
+.progress-info {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: auto;
+}
+
+/* 问题区域 */
+.question-section {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.pinyin-display {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f0f9ff;
+  padding: 20rpx 40rpx;
+  border-radius: 30rpx;
+}
+
+.pinyin-text {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #1aad19;
+  margin-right: 20rpx;
+}
+
+.play-icon {
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  color: #1aad19;
+}
+
+.hint-btn {
+  padding: 15rpx 30rpx;
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border-radius: 15rpx;
+  font-size: 24rpx;
+}
+
+/* 选项区域 */
+.options-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.option-item {
+  padding: 30rpx 0;
+  text-align: center;
+  font-size: 40rpx;
+  border-radius: 20rpx;
+  background-color: #f7f7f7;
+  color: #333;
+  transition: all 0.3s;
+  border: 2rpx solid transparent;
+}
+
+.option-item:active {
+  background-color: #e6e6e6;
+}
+
+.option-item.selected {
+  border-color: #1aad19;
+  background-color: #e6f7e6;
+}
+
+.option-item.correct {
+  border-color: #1aad19;
+  background-color: #e6f7e6;
+  color: #1aad19;
+  font-weight: bold;
+}
+
+.option-item.wrong {
+  border-color: #ff4d4f;
+  background-color: #fff1f0;
+  color: #ff4d4f;
+}
+
+/* 反馈区域 */
+.feedback-section {
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  border-radius: 15rpx;
+}
+
+.feedback-message {
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+.feedback-message.correct {
+  color: #1aad19;
+}
+
+.feedback-message.wrong {
+  color: #ff4d4f;
+}
+
+.correct-answer {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  margin-bottom: 20rpx;
+}
+
+.submit-btn,
+.next-btn {
+  background-color: #1aad19;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 25rpx;
+  padding: 20rpx 0;
+}
+
+.submit-btn[disabled] {
+  background-color: #ccc;
+}
+
+/* 重新开始按钮 */
+.restart-section {
+  padding: 20rpx 0;
+}
+
+.restart-btn {
+  border-radius: 25rpx;
+  padding: 20rpx 0;
+}

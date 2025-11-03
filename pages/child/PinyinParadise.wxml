@@ -1,0 +1,85 @@
+<!--pages/child/PinyinParadise.wxml-->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-title">拼音练习</view>
+  
+  <!-- 拼音类型选择 -->
+  <view class="type-selector">
+    <view 
+      wx:for="{{pinyinTypes}}" 
+      wx:key="id"
+      class="type-item {{currentType === item.id ? 'active' : ''}}"
+      bindtap="switchPinyinType"
+      data-type="{{item.id}}"
+    >
+      {{item.name}}
+    </view>
+  </view>
+  
+  <!-- 得分显示 -->
+  <view class="score-section">
+    <view class="score-label">得分：</view>
+    <view class="score-value">{{score}}</view>
+    <view class="progress-info">{{questionIndex + 1}}/{{questions.length}}</view>
+  </view>
+  
+  <!-- 问题区域 -->
+  <view class="question-section" wx:if="{{currentQuestion}}">
+    <view class="question-header">
+      <view class="pinyin-display" bindtap="playPinyin">
+        <text class="pinyin-text">{{currentQuestion.pinyin}}</text>
+        <view class="play-icon">▶</view>
+      </view>
+      <view class="hint-btn" bindtap="showHint">提示</view>
+    </view>
+    
+    <!-- 选项区域 -->
+    <view class="options-section">
+      <view 
+        wx:for="{{currentQuestion.options}}" 
+        wx:key="index"
+        class="option-item {{selectedOption === item ? 'selected' : ''}} {{showAnswer && item === currentQuestion.answer ? 'correct' : ''}} {{showAnswer && selectedOption === item && isCorrect === false ? 'wrong' : ''}}"
+        bindtap="selectOption"
+        data-option="{{item}}"
+      >
+        {{item}}
+      </view>
+    </view>
+    
+    <!-- 答案反馈 -->
+    <view class="feedback-section" wx:if="{{showAnswer}}">
+      <view class="feedback-message {{isCorrect ? 'correct' : 'wrong'}}">
+        {{isCorrect ? '回答正确！👍' : '回答错误！👎'}}
+      </view>
+      <view class="correct-answer" wx:if="{{!isCorrect}}">
+        正确答案是：{{currentQuestion.answer}}
+      </view>
+    </view>
+    
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button 
+        wx:if="{{!showAnswer}}"
+        class="submit-btn" 
+        bindtap="submitAnswer"
+        disabled="{{!selectedOption}}"
+      >
+        提交答案
+      </button>
+      <button 
+        wx:else
+        class="next-btn" 
+        bindtap="nextQuestion"
+      >
+        {{questionIndex + 1 < questions.length ? '下一题' : '完成练习'}}
+      </button>
+    </view>
+  </view>
+  
+  <!-- 重新开始按钮 -->
+  <view class="restart-section">
+    <button class="restart-btn" bindtap="restartPractice" type="warn">
+      重新开始练习
+    </button>
+  </view>
+</view>

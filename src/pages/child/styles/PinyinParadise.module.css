@@ -1,0 +1,221 @@
+.container {
+  padding: 2rem;
+  text-align: center;
+  background-color: #f0f9ff;
+  min-height: 100vh;
+}
+
+.container h1 {
+  color: #1e40af;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 初始屏幕样式 */
+.initialScreen {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro {
+  font-size: 1.5rem;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #374151;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.startButton {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.startButton:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* 练习屏幕样式 */
+.practiceScreen {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.targetArea {
+  background-color: #dbeafe;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.targetArea h2 {
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.soundButton {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.soundButton:hover {
+  background-color: #1d4ed8;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.pinyinCard {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 3px solid transparent;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pinyinCard.selectable {
+  border-color: #93c5fd;
+}
+
+.pinyinCard.selectable:hover {
+  background-color: #eff6ff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.2);
+}
+
+.pinyinCard.correct {
+  background-color: #dcfce7;
+  border-color: #22c55e;
+}
+
+.pinyinCard.incorrect {
+  background-color: #fee2e2;
+  border-color: #ef4444;
+}
+
+.pinyinText {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+}
+
+.pinyinImage {
+  font-size: 0.9rem;
+  color: #6b7280;
+  width: 80px;
+  height: 80px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressInfo {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: #374151;
+}
+
+/* 结果屏幕样式 */
+.resultScreen {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.resultScreen h2 {
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+}
+
+.resultStats {
+  margin-bottom: 2rem;
+}
+
+.resultStats p {
+  font-size: 1.2rem;
+  margin: 0.8rem 0;
+  color: #374151;
+}
+
+.playAgainButton {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.playAgainButton:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .container h1 {
+    font-size: 2rem;
+  }
+  
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pinyinCard {
+    min-height: 100px;
+  }
+  
+  .pinyinText {
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,78 @@
+<!--pages/child/WordPark.wxml-->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-title">词语乐园</view>
+  
+  <!-- 词语分类选择 -->
+  <view class="category-selector">
+    <scroll-view scroll-x="true" class="horizontal-scroll">
+      <view 
+        wx:for="{{wordCategories}}" 
+        wx:key="id"
+        class="category-item {{currentCategory === item.id ? 'active' : ''}}"
+        bindtap="switchCategory"
+        data-category="{{item.id}}"
+      >
+        {{item.name}}
+      </view>
+    </scroll-view>
+  </view>
+  
+  <!-- 词语列表 -->
+  <view class="words-list">
+    <view 
+      wx:for="{{words}}" 
+      wx:key="id"
+      class="word-item"
+      bindtap="viewWordDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="word-image-container">
+        <!-- 图片占位符 -->
+        <view class="image-placeholder">
+          <text class="placeholder-text">{{item.word.charAt(0)}}</text>
+        </view>
+      </view>
+      <view class="word-info">
+        <text class="word-text">{{item.word}}</text>
+        <text class="word-pinyin">{{item.pinyin}}</text>
+        <text class="word-meaning">{{item.meaning}}</text>
+      </view>
+      <view class="arrow-icon">></view>
+    </view>
+  </view>
+  
+  <!-- 词语详情弹窗 -->
+  <view class="word-detail-modal" wx:if="{{showWordDetail && selectedWord}}">
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">词语详情</text>
+        <view class="close-btn" bindtap="closeWordDetail">×</view>
+      </view>
+      
+      <view class="detail-content">
+        <view class="detail-image-container">
+          <!-- 图片占位符 -->
+          <view class="detail-image-placeholder">
+            <text class="detail-placeholder-text">{{selectedWord.word.charAt(0)}}</text>
+          </view>
+        </view>
+        
+        <view class="detail-info">
+          <text class="detail-word">{{selectedWord.word}}</text>
+          <text class="detail-pinyin">{{selectedWord.pinyin}}</text>
+          <text class="detail-meaning">{{selectedWord.meaning}}</text>
+        </view>
+        
+        <view class="sound-section">
+          <button class="sound-btn" bindtap="playWordSound">🔊 播放发音</button>
+        </view>
+        
+        <view class="example-section">
+          <text class="example-title">例句：</text>
+          <text class="example-text">{{selectedWord.example}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

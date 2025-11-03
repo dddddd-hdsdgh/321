@@ -1,0 +1,193 @@
+/* pages/child/HanziStory.wxss */
+.hanzi-story-container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+/* 汉字列表 */
+.hanzi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.hanzi-item {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.hanzi-item:active {
+  transform: scale(0.98);
+}
+
+.hanzi-character {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #4ecdc4;
+  width: 120rpx;
+  text-align: center;
+  margin-right: 30rpx;
+}
+
+.hanzi-info {
+  flex: 1;
+}
+
+.hanzi-pinyin {
+  font-size: 36rpx;
+  color: #666666;
+  margin-bottom: 8rpx;
+}
+
+.hanzi-meaning {
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.hanzi-strokes {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.hanzi-arrow {
+  font-size: 40rpx;
+  color: #cccccc;
+}
+
+/* 详情弹窗 */
+.detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40rpx;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.detail-character {
+  font-size: 120rpx;
+  font-weight: bold;
+  color: #4ecdc4;
+}
+
+.close-btn {
+  font-size: 48rpx;
+  color: #999999;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+
+.modal-body {
+  padding: 40rpx;
+}
+
+.detail-pinyin {
+  font-size: 48rpx;
+  color: #666666;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+.detail-meaning {
+  font-size: 36rpx;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+/* 故事部分 */
+.story-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  padding-left: 20rpx;
+  border-left: 6rpx solid #4ecdc4;
+}
+
+.story-content {
+  font-size: 32rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* 字形演变部分 */
+.evolution-section {
+  margin-bottom: 20rpx;
+}
+
+.evolution-stages {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.evolution-stage {
+  flex: 1;
+  text-align: center;
+}
+
+.stage-name {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+}
+
+.stage-placeholder {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60rpx;
+  color: #4ecdc4;
+  margin: 0 auto;
+}

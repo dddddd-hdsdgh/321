@@ -1,0 +1,199 @@
+.container {
+  padding: 20px;
+}
+
+.title {
+  font-size: 28px;
+  color: #ff6b6b;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.storyContainer {
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+}
+
+.storyStep {
+  text-align: center;
+}
+
+.stepTitle {
+  font-size: 24px;
+  color: #4ecdc4;
+  margin-bottom: 20px;
+}
+
+.storyImage {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px;
+  background-color: #f0f8ff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.storyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.imagePlaceholder {
+  font-size: 120px;
+  color: #ff9b6b;
+}
+
+.stepDescription {
+  font-size: 20px;
+  color: #292f36;
+  line-height: 1.6;
+}
+
+.stepNavigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.stepButton {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  background-color: #6a85b6;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.stepButton:hover:not(:disabled) {
+  background-color: #5a729e;
+}
+
+.stepButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.stepIndicator {
+  font-size: 20px;
+  color: #4ecdc4;
+  font-weight: bold;
+}
+
+.interactionSection {
+  margin-bottom: 30px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  color: #4ecdc4;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #4ecdc4;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.strokePuzzle {
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.strokeArea {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 30px;
+  background-color: #fffacd;
+  border-radius: 15px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  padding: 20px;
+}
+
+.strokeTarget {
+  background-color: #ffe66d;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 100px;
+}
+
+.strokeNumber {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #ff6b6b;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.strokeOptions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.strokeOption {
+  padding: 15px 30px;
+  background-color: #4ecdc4;
+  color: white;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: grab;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.strokeOption:hover {
+  background-color: #45b7aa;
+  transform: translateY(-2px);
+}
+
+.strokeOption:active {
+  cursor: grabbing;
+}
+
+.homeButton {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 25px;
+  background-color: #ff6b6b;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.homeButton:hover {
+  background-color: #ee5a5a;
+  transform: translateY(-2px);
+}

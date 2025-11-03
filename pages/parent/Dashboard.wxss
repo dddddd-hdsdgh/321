@@ -1,0 +1,156 @@
+/* pages/parent/Dashboard.wxss */
+.parent-dashboard-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 顶部栏 */
+.header {
+  background-color: #4ecdc4;
+  color: white;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}
+
+.back-icon {
+  margin-right: 8rpx;
+}
+
+/* 孩子信息卡片 */
+.child-info-card {
+  background-color: white;
+  padding: 40rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.child-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #e8f5e9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60rpx;
+  margin-right: 30rpx;
+}
+
+.child-details {
+  flex: 1;
+}
+
+.child-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.child-meta {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 学习统计卡片 */
+.stats-card {
+  background-color: white;
+  padding: 40rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.stats-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+}
+
+.stat-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #4ecdc4;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 管理功能区域 */
+.management-section {
+  background-color: white;
+  padding: 40rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.management-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.management-item {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.management-icon {
+  font-size: 60rpx;
+  margin-bottom: 15rpx;
+}
+
+.management-text {
+  font-size: 26rpx;
+  color: #333;
+}

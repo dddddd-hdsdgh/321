@@ -1,0 +1,144 @@
+<!--pages/child/SentenceGarden.wxml-->
+<!--pages/child/SentenceGarden.wxml-->
+<view class="sentence-garden-container">
+  <!-- 页面标题 -->
+  <view class="page-title">句子乐园</view>
+  
+  <!-- 学习模式切换 -->
+  <view class="mode-switcher">
+    <view class="mode-tab {{learningMode === 'browse' ? 'active' : ''}}" data-mode="browse" bindtap="switchLearningMode">
+      浏览模式
+    </view>
+    <view class="mode-tab {{learningMode === 'practice' ? 'active' : ''}}" data-mode="practice" bindtap="switchLearningMode">
+      练习模式
+    </view>
+  </view>
+  
+  <!-- 浏览模式 -->
+  <view wx:if="{{learningMode === 'browse'}}" class="browse-mode">
+    <!-- 分类选择 -->
+    <view class="category-selector">
+      <view class="horizontal-scroll">
+        <view 
+          wx:for="{{sentenceCategories}}" 
+          wx:key="id"
+          class="category-item {{currentCategory === item.id ? 'active' : ''}}"
+          data-category="{{item.id}}"
+          bindtap="switchCategory"
+        >
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+    
+    <!-- 句子列表 -->
+    <view class="sentences-list">
+      <view wx:if="{{loading}}" class="loading">
+        <view class="loading-spinner"></view>
+        <text>加载中...</text>
+      </view>
+      
+      <block wx:elif="{{sentences.length > 0}}">
+        <view wx:for="{{sentences}}" wx:key="id" class="sentence-item" data-id="{{item.id}}" bindtap="viewSentenceDetail">
+          <view class="sentence-text">{{item.text}}</view>
+          <view class="sentence-pinyin">{{item.pinyin}}</view>
+          <view class="sentence-meaning">{{item.meaning}}</view>
+          <view class="arrow-icon">▶️</view>
+        </view>
+      </block>
+      
+      <view wx:else class="empty-state">
+        <view class="empty-icon">📝</view>
+        <text>暂无句子内容</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 练习模式 -->
+  <view wx:elif="{{learningMode === 'practice'}}" class="practice-mode">
+    <!-- 练习进度 -->
+    <view class="practice-progress">
+      <text>问题 {{practice.currentQuestionIndex}}/{{practice.totalQuestions}}</text>
+      <text class="score">得分: {{practice.score}}</text>
+    </view>
+    
+    <!-- 问题区域 -->
+    <view wx:if="{{practice.currentQuestion}}" class="question-area">
+      <view class="question-header">
+        <text>请选择句子的正确含义</text>
+      </view>
+      
+      <view class="question-sentence">
+        <view class="sentence-original">{{practice.currentQuestion.text}}</view>
+        <view class="sentence-pronunciation">{{practice.currentQuestion.pinyin}}</view>
+      </view>
+      
+      <!-- 选项区域 -->
+      <view class="options-area">
+        <view 
+          wx:for="{{practice.options}}" 
+          wx:key="index"
+          class="option-item {{practice.selectedOption === item ? 'selected' : ''}} {{practice.isCorrect !== null && practice.selectedOption === item ? (practice.isCorrect ? 'correct' : 'wrong') : ''}}"
+          data-option="{{item}}"
+          bindtap="selectOption"
+        >
+          {{item}}
+        </view>
+      </view>
+      
+      <!-- 结果反馈 -->
+      <view wx:if="{{practice.isCorrect !== null}}" class="feedback-area">
+        <view wx:if="{{practice.isCorrect}}" class="correct-feedback">
+          <view class="feedback-icon">✅</view>
+          <text>回答正确！</text>
+        </view>
+        <view wx:else class="wrong-feedback">
+          <view class="feedback-icon">❌</view>
+          <text>回答错误！</text>
+          <view class="correct-answer">正确答案：{{practice.currentQuestion.meaning}}</view>
+        </view>
+      </view>
+      
+      <!-- 提交按钮 -->
+      <view wx:if="{{practice.isCorrect === null}}" class="submit-btn" bindtap="submitAnswer">
+        提交答案
+      </view>
+    </view>
+    
+    <view wx:else class="no-question">
+      <text>请等待加载题目...</text>
+    </view>
+  </view>
+  
+  <!-- 句子详情弹窗 -->
+  <view wx:if="{{showDetail && selectedSentence}}" class="sentence-detail-modal">
+    <view class="modal-content">
+      <view class="modal-header">
+        <view class="modal-title">句子详情</view>
+        <view class="close-btn" bindtap="closeSentenceDetail">✕</view>
+      </view>
+      
+      <view class="detail-content">
+        <!-- 句子内容 -->
+        <view class="sentence-display">
+          <view class="detail-sentence">{{selectedSentence.text}}</view>
+          <view class="detail-pinyin">{{selectedSentence.pinyin}}</view>
+          <view class="detail-meaning">{{selectedSentence.meaning}}</view>
+        </view>
+        
+        <!-- 发音按钮 -->
+        <view class="sound-section">
+          <button class="sound-btn" bindtap="handlePlaySound" data-text="{{selectedSentence.text}}" disabled="{{!soundEnabled}}">
+            {{soundEnabled ? '🔊 播放发音' : '🔇 声音已关闭'}}
+          </button>
+        </view>
+        
+        <!-- 例句 -->
+        <view class="example-section">
+          <view class="example-title">例句：</view>
+          <view class="example-text">{{selectedSentence.example}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

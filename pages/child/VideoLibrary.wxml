@@ -1,0 +1,46 @@
+<!--pages/child/VideoLibrary.wxml-->
+<view class="video-library-container">
+  <!-- 分类标签栏 -->
+  <view class="category-tabs">
+    <view 
+      wx:for="{{videoCategories}}" 
+      wx:key="id"
+      class="category-tab {{currentCategory === item.id ? 'active' : ''}}"
+      data-category="{{item.id}}"
+      bindtap="switchCategory"
+    >
+      {{item.name}}
+    </view>
+  </view>
+
+  <!-- 视频列表 -->
+  <view class="video-list">
+    <view wx:if="{{loading}}" class="loading">
+      <view class="loading-spinner"></view>
+      <text>加载中...</text>
+    </view>
+    
+    <block wx:elif="{{videos.length > 0}}">
+      <view wx:for="{{videos}}" wx:key="id" class="video-item" data-id="{{item.id}}" bindtap="playVideo">
+        <view class="video-thumbnail">
+          <view class="play-icon">▶️</view>
+          <view class="video-duration">{{item.duration}}</view>
+        </view>
+        <view class="video-info">
+          <view class="video-title">{{item.title}}</view>
+          <view class="video-progress-bar">
+            <view class="progress-bg">
+              <view class="progress-fill" style="width: {{item.progress}}%"></view>
+            </view>
+            <text class="progress-text">{{item.progress}}%</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <view wx:else class="empty-state">
+      <view class="empty-icon">📺</view>
+      <text>暂无视频内容</text>
+    </view>
+  </view>
+</view>

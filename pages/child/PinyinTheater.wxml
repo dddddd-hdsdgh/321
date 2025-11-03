@@ -1,0 +1,55 @@
+<!--pages/child/PinyinTheater.wxml-->
+<view class="video-player-container">
+  <!-- 视频播放区域 -->
+  <view class="video-wrapper" bindtap="showControls">
+    <video 
+      id="player"
+      class="video"
+      src="" 
+      controls="false"
+      autoplay="false"
+      bindtimeupdate="onPlayStateChange"
+      bindended="onEnded"
+      show-fullscreen-btn="true"
+      show-center-play-btn="false"
+      show-play-btn="false"
+    >
+      <!-- 视频占位符 -->
+      <view class="video-placeholder">
+        <view class="placeholder-icon">🎬</view>
+        <text class="placeholder-text">拼音动画剧场</text>
+      </view>
+    </video>
+    
+    <!-- 自定义控制层 -->
+    <view class="video-controls" wx:if="{{controlsVisible}}">
+      <!-- 播放/暂停按钮 -->
+      <view class="play-pause-btn" bindtap="togglePlay">
+        {{playing ? '⏸️' : '▶️'}}
+      </view>
+      
+      <!-- 进度条 -->
+      <view class="progress-container">
+        <text class="time-current">{{formatTime(currentTime)}}</text>
+        <view class="progress-bar">
+          <view class="progress-bg">
+            <view class="progress-fill" style="width: {{progress}}%"></view>
+          </view>
+        </view>
+        <text class="time-total">{{formatTime(totalTime)}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 视频信息区域 -->
+  <view class="video-info">
+    <view class="video-title">{{videoInfo.title}}</view>
+    <view class="video-description">{{videoInfo.description}}</view>
+    
+    <!-- 学习提示 -->
+    <view class="learning-tips">
+      <view class="tips-icon">💡</view>
+      <text>观看视频时，可以跟读拼音的发音，加深记忆哦！</text>
+    </view>
+  </view>
+</view>

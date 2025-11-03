@@ -1,0 +1,329 @@
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 30rpx 0;
+  color: #333;
+}
+
+/* 学习模式选择 */
+.mode-selector {
+  display: flex;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  padding: 10rpx;
+}
+
+.mode-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  border-radius: 15rpx;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.mode-item.active {
+  background-color: #4ecdc4;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 汉字认知模式 */
+.recognition-mode {
+  margin-top: 20rpx;
+}
+
+.recognition-title {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.hanzi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.hanzi-item {
+  padding: 30rpx 0;
+  text-align: center;
+  border-radius: 20rpx;
+  border: 2rpx solid;
+  transition: all 0.3s;
+}
+
+.hanzi-item:active {
+  transform: scale(0.95);
+}
+
+.hanzi-character {
+  font-size: 64rpx;
+  font-weight: bold;
+  display: block;
+}
+
+.hanzi-pinyin {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  margin-top: 10rpx;
+}
+
+.current-hanzi {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  border: 2rpx solid;
+  margin-top: 20rpx;
+}
+
+.hanzi-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.hanzi-detail-character {
+  font-size: 80rpx;
+  font-weight: bold;
+}
+
+.sound-btn {
+  font-size: 48rpx;
+  cursor: pointer;
+}
+
+.hanzi-detail-info {
+  margin-bottom: 20rpx;
+}
+
+.hanzi-detail-pinyin {
+  font-size: 36rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.hanzi-detail-meaning {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.strokes-title {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 笔画练习模式 */
+.writing-mode {
+  margin-top: 20rpx;
+}
+
+.writing-title {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.writing-hanzi-selector {
+  margin-bottom: 30rpx;
+}
+
+.horizontal-scroll {
+  white-space: nowrap;
+  padding: 10rpx 0;
+}
+
+.writing-hanzi-item {
+  display: inline-block;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 48rpx;
+  font-weight: bold;
+  border-radius: 15rpx;
+  margin-right: 20rpx;
+  color: #333;
+}
+
+.writing-hanzi-item.selected {
+  color: #fff;
+}
+
+.strokes-practice {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  border: 2rpx solid;
+}
+
+.strokes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.current-hanzi-big {
+  font-size: 120rpx;
+  font-weight: bold;
+}
+
+.stroke-progress {
+  font-size: 28rpx;
+  color: #666;
+  background-color: #f0f0f0;
+  padding: 10rpx 20rpx;
+  border-radius: 15rpx;
+}
+
+.strokes-display {
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.strokes-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-right: 10rpx;
+}
+
+.strokes-name {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.strokes-drawing-area {
+  margin-bottom: 30rpx;
+}
+
+.drawing-canvas {
+  width: 100%;
+  height: 400rpx;
+  background-color: #f9f9f9;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #e0e0e0;
+}
+
+.drawing-hint {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.strokes-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-btn {
+  flex: 1;
+  margin: 0 10rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+}
+
+/* 互动游戏模式 */
+.game-mode {
+  margin-top: 20rpx;
+}
+
+.game-title {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.game-score {
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ff6b35;
+  margin-bottom: 30rpx;
+}
+
+.game-question {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.question-text {
+  font-size: 32rpx;
+  color: #666;
+  margin-right: 20rpx;
+}
+
+.question-hanzi {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #4ecdc4;
+  margin: 0 20rpx;
+}
+
+.question-pinyin {
+  font-size: 32rpx;
+  color: #999;
+  margin-left: 20rpx;
+}
+
+.game-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.game-option {
+  padding: 40rpx 0;
+  text-align: center;
+  font-size: 64rpx;
+  font-weight: bold;
+  border-radius: 20rpx;
+  color: #333;
+  transition: all 0.3s;
+}
+
+.game-option:active {
+  transform: scale(0.95);
+}
+
+.game-option.selected {
+  color: #fff;
+}
+
+.game-actions {
+  padding: 0 40rpx;
+}
+
+.submit-game-btn {
+  background-color: #4ecdc4;
+  color: #fff;
+  border-radius: 25rpx;
+  font-size: 32rpx;
+  padding: 20rpx 0;
+}
+
+.submit-game-btn[disabled] {
+  background-color: #ccc;
+}

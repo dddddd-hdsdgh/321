@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/child/Home",
+    "pages/child/PinyinTheater",
+    "pages/child/HanziStory",
+    "pages/child/PinyinParadise",
+    "pages/child/HanziWorld",
+    "pages/child/WordPark",
+    "pages/child/SentenceGarden",
+    "pages/child/VideoLibrary",
+    "pages/child/Settings",
+    "pages/parent/Dashboard",
+    "pages/parent/Courses",
+    "pages/parent/Statistics",
+    "pages/parent/Settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4ecdc4",
+    "navigationBarTitleText": "萌豆语文动画屋",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4ecdc4",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/child/Home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/child/VideoLibrary",
+        "text": "动画库"
+      },
+      {
+        "pagePath": "pages/child/Settings",
+        "text": "设置"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于提供本地化服务"
+    }
+  }
+}

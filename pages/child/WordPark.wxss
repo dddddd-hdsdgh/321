@@ -1,0 +1,243 @@
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 30rpx 0;
+  color: #333;
+}
+
+/* 词语分类选择 */
+.category-selector {
+  margin-bottom: 30rpx;
+}
+
+.horizontal-scroll {
+  white-space: nowrap;
+  padding: 10rpx 0;
+}
+
+.category-item {
+  display: inline-block;
+  padding: 20rpx 40rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.category-item.active {
+  background-color: #4ecdc4;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 词语列表 */
+.words-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.word-item {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.word-item:active {
+  transform: scale(0.98);
+}
+
+.word-image-container {
+  margin-right: 20rpx;
+}
+
+.image-placeholder {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #e3f2fd;
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1976d2;
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.placeholder-text {
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.word-info {
+  flex: 1;
+}
+
+.word-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 5rpx;
+}
+
+.word-pinyin {
+  font-size: 26rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 5rpx;
+}
+
+.word-meaning {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+}
+
+.arrow-icon {
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+/* 词语详情弹窗 */
+.word-detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40rpx;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 30rpx;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-btn {
+  font-size: 48rpx;
+  color: #999;
+  cursor: pointer;
+}
+
+.detail-content {
+  padding: 30rpx;
+}
+
+.detail-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+
+.detail-image-placeholder {
+  width: 200rpx;
+  height: 200rpx;
+  background-color: #e3f2fd;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-placeholder-text {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.detail-info {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.detail-word {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.detail-pinyin {
+  font-size: 36rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.detail-meaning {
+  font-size: 32rpx;
+  color: #999;
+  display: block;
+}
+
+.sound-section {
+  margin-bottom: 30rpx;
+  padding: 0 40rpx;
+}
+
+.sound-btn {
+  background-color: #4ecdc4;
+  color: #fff;
+  border-radius: 25rpx;
+  font-size: 32rpx;
+  padding: 20rpx 0;
+}
+
+.example-section {
+  background-color: #f9f9f9;
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+
+.example-title {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.example-text {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.5;
+}

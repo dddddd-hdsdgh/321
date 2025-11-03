@@ -1,0 +1,275 @@
+.container {
+  padding: 20px;
+}
+
+.welcome {
+  font-size: 28px;
+  color: #ff6b6b;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.sectionTitle {
+  font-size: 24px;
+  color: #4ecdc4;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #4ecdc4;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.todaySection {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #fff5f5 0%, #fff8e1 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.viewAllButton {
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255,107,107,0.3);
+}
+
+.courseList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.courseCard {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.courseCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.courseCover {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.courseCover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.courseCard:hover .courseCover img {
+  transform: scale(1.05);
+}
+
+.playIcon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.courseCover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coverPlaceholder {
+  font-size: 36px;
+  color: #4ecdc4;
+}
+
+.courseTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #292f36;
+  margin-bottom: 10px;
+}
+
+.courseInfoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.courseType {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #e67e22;
+}
+
+.courseDuration {
+  color: #666;
+  font-weight: 500;
+}
+
+.completedBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.achievementSection {
+  margin-bottom: 30px;
+}
+
+.achievementCard {
+  background-color: #fffacd;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.achievementCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.medalIcon {
+  font-size: 48px;
+}
+
+.achievementText {
+  font-size: 20px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.restReminder {
+  background-color: #ffe66d;
+  color: #6c584c;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 功能模块样式 */
+.featureSection {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.featureCard {
+  background: white;
+  border-radius: 15px;
+  padding: 1.2rem;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #4caf50, transparent);
+  transition: left 0.5s ease;
+}
+
+.featureCard:hover::before {
+  left: 100%;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.featureIcon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.featureTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #292f36;
+  margin-bottom: 10px;
+}
+
+.featureDesc {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .featureGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

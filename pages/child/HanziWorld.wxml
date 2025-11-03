@@ -1,0 +1,134 @@
+<!--pages/child/HanziWorld.wxml-->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-title">汉字世界</view>
+  
+  <!-- 学习模式选择 -->
+  <view class="mode-selector">
+    <view 
+      wx:for="{{learningModes}}" 
+      wx:key="id"
+      class="mode-item {{currentMode === item.id ? 'active' : ''}}"
+      bindtap="switchMode"
+      data-mode="{{item.id}}"
+    >
+      {{item.name}}
+    </view>
+  </view>
+  
+  <!-- 汉字认知模式 -->
+  <view class="recognition-mode" wx:if="{{currentMode === 'recognition'}}">
+    <view class="recognition-title">点击下方汉字学习</view>
+    
+    <!-- 汉字网格 -->
+    <view class="hanzi-grid">
+      <view 
+        wx:for="{{hanzis}}" 
+        wx:key="id"
+        class="hanzi-item"
+        style="background-color: {{item.color}}30; border-color: {{item.color}};"
+        bindtap="selectHanzi"
+        data-id="{{item.id}}"
+      >
+        <text class="hanzi-character">{{item.character}}</text>
+        <text class="hanzi-pinyin">{{item.pinyin}}</text>
+      </view>
+    </view>
+    
+    <!-- 当前选中汉字详情 -->
+    <view class="current-hanzi" wx:if="{{currentHanzi}}" style="background-color: {{currentHanzi.color}}20; border-color: {{currentHanzi.color}};">
+      <view class="hanzi-detail-header">
+        <text class="hanzi-detail-character">{{currentHanzi.character}}</text>
+        <view class="sound-btn" bindtap="playHanziSound">🔊</view>
+      </view>
+      <view class="hanzi-detail-info">
+        <text class="hanzi-detail-pinyin">{{currentHanzi.pinyin}}</text>
+        <text class="hanzi-detail-meaning">{{currentHanzi.meaning}}</text>
+      </view>
+      <view class="hanzi-detail-strokes">
+        <text class="strokes-title">笔画: {{currentHanzi.strokes.length}}画</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 笔画练习模式 -->
+  <view class="writing-mode" wx:if="{{currentMode === 'writing'}}">
+    <view class="writing-title">笔画练习</view>
+    
+    <!-- 汉字选择 -->
+    <view class="writing-hanzi-selector">
+      <scroll-view scroll-x="true" class="horizontal-scroll">
+        <view 
+          wx:for="{{hanzis}}" 
+          wx:key="id"
+          class="writing-hanzi-item {{currentHanzi.id === item.id ? 'selected' : ''}}"
+          style="background-color: {{currentHanzi.id === item.id ? item.color : '#f0f0f0'}};"
+          bindtap="selectHanzi"
+          data-id="{{item.id}}"
+        >
+          {{item.character}}
+        </view>
+      </scroll-view>
+    </view>
+    
+    <!-- 笔画练习区 -->
+    <view class="strokes-practice" wx:if="{{currentHanzi}}" style="border-color: {{currentHanzi.color}};">
+      <view class="strokes-header">
+        <text class="current-hanzi-big">{{currentHanzi.character}}</text>
+        <text class="stroke-progress">{{currentStrokeIndex + 1}}/{{currentHanzi.strokes.length}}</text>
+      </view>
+      
+      <view class="strokes-display">
+        <text class="strokes-label">当前笔画:</text>
+        <text class="strokes-name">{{currentHanzi.strokes[currentStrokeIndex]}}</text>
+      </view>
+      
+      <view class="strokes-drawing-area">
+        <!-- 简化的笔画展示区域 -->
+        <view class="drawing-canvas">
+          <!-- 这里可以放置canvas组件实现真实的笔画练习 -->
+          <text class="drawing-hint">请按照笔画顺序练习</text>
+        </view>
+      </view>
+      
+      <view class="strokes-controls">
+        <button class="control-btn" bindtap="prevStroke" disabled="{{currentStrokeIndex === 0}}">上一笔</button>
+        <button class="control-btn" bindtap="restartStrokes">重新开始</button>
+        <button class="control-btn" bindtap="nextStroke" disabled="{{currentStrokeIndex === currentHanzi.strokes.length - 1}}">下一笔</button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 互动游戏模式 -->
+  <view class="game-mode" wx:if="{{currentMode === 'game'}}">
+    <view class="game-title">汉字配对游戏</view>
+    
+    <view class="game-score">得分: {{score}}</view>
+    
+    <!-- 游戏问题 -->
+    <view class="game-question" wx:if="{{gameHanzi}}">
+      <text class="question-text">请找出:</text>
+      <text class="question-hanzi">{{gameHanzi.character}}</text>
+      <text class="question-pinyin">({{gameHanzi.pinyin}})</text>
+    </view>
+    
+    <!-- 游戏选项 -->
+    <view class="game-options" wx:if="{{gameOptions.length > 0}}">
+      <view 
+        wx:for="{{gameOptions}}" 
+        wx:key="id"
+        class="game-option {{selectedOption === item.id.toString() ? 'selected' : ''}}"
+        style="background-color: {{selectedOption === item.id.toString() ? item.color : '#f0f0f0'}};"
+        bindtap="selectGameOption"
+        data-id="{{item.id}}"
+      >
+        {{item.character}}
+      </view>
+    </view>
+    
+    <!-- 提交按钮 -->
+    <view class="game-actions">
+      <button class="submit-game-btn" bindtap="submitGameAnswer" disabled="{{!selectedOption}}">提交答案</button>
+    </view>
+  </view>
+</view>

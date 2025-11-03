@@ -1,0 +1,87 @@
+<!-- pages/child/Home.wxml -->
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-section">
+    <view class="user-avatar">
+      <view class="avatar-placeholder">👶</view>
+    </view>
+    <view class="user-info">
+      <text class="user-name">{{userInfo && userInfo.name ? userInfo.name : '小朋友'}}</text>
+      <text class="welcome-text">欢迎来到语文动画屋！</text>
+    </view>
+    <view class="badge">
+      <text class="badge-text">Lv.{{userInfo && userInfo.level ? userInfo.level : 1}}</text>
+    </view>
+  </view>
+
+  <!-- 今日推荐区域 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">今日推荐</text>
+      <view class="section-more" bindtap="viewAllRecommend">
+        <text>查看全部</text>
+        <text class="more-arrow">></text>
+      </view>
+    </view>
+    <view class="recommend-list">
+      <view class="recommend-item" wx:for="{{todayRecommend}}" wx:key="id" data-id="{{item.id}}" data-type="{{item.type}}" bindtap="goToCourse">
+        <view class="course-cover-placeholder">{{item.type === 'video' ? '🎬' : item.type === 'story' ? '📚' : '🎮'}}</view>
+        <view class="course-info">
+          <text class="course-title">{{item.title}}</text>
+          <view class="course-meta">
+            <text class="course-duration">{{item.duration}}</text>
+            <view class="progress-bar">
+              <view class="progress-bg"></view>
+              <view class="progress-fill" style="width:{{item.progress}}%"></view>
+            </view>
+            <text class="progress-text">{{item.progress}}%</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能模块区域 -->
+  <view class="section">
+    <text class="section-title">学习乐园</text>
+    <view class="feature-grid">
+      <view class="feature-item" wx:for="{{features}}" wx:key="id" data-id="{{item.id}}" bindtap="goToFeature">
+        <view class="feature-icon">
+          <view class="icon-placeholder">{{item.id === 'pinyin-paradise' ? '🔤' : item.id === 'hanzi-world' ? '汉字' : item.id === 'video-library' ? '🎬' : item.id === 'sentence-garden' ? '💬' : '📝'}}</view>
+        </view>
+        <text class="feature-title">{{item.title}}</text>
+        <text class="feature-desc">{{item.description}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成就展示区域 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">我的成就</text>
+      <view class="section-more" bindtap="goToAchievements">
+        <text>查看全部</text>
+        <text class="more-arrow">></text>
+      </view>
+    </view>
+    <view class="achievement-list">
+      <view class="achievement-item" wx:for="{{achievements}}" wx:key="id" style="opacity:{{item.unlocked ? '1' : '0.5'}};filter:{{item.unlocked ? 'none' : 'grayscale(100%)'}};">
+        <view class="achievement-icon">
+          <view class="achievement-icon-placeholder">{{item.unlocked ? '🏆' : '🔒'}}</view>
+        </view>
+        <view class="achievement-info">
+          <text class="achievement-title">{{item.title}}</text>
+          <text class="achievement-desc">{{item.description}}</text>
+        </view>
+        <view class="achievement-status">
+          <text class="status-text">{{item.unlocked ? '已解锁' : '未解锁'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习提醒 -->
+  <view class="reminder">
+    <text class="reminder-text">📚 学习20分钟后记得休息一下眼睛哦！</text>
+  </view>
+</view>

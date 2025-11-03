@@ -1,0 +1,155 @@
+/* pages/child/VideoLibrary.wxss */
+.video-library-container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 分类标签栏 */
+.category-tabs {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 10rpx;
+  margin-bottom: 20rpx;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.category-tab {
+  flex: 1;
+  min-width: 160rpx;
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #666666;
+  border-radius: 8rpx;
+  margin: 0 10rpx;
+}
+
+.category-tab.active {
+  background-color: #4ecdc4;
+  color: #ffffff;
+}
+
+/* 视频列表 */
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.video-item {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.video-thumbnail {
+  width: 200rpx;
+  height: 150rpx;
+  background-color: #e0e0e0;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-right: 20rpx;
+}
+
+.play-icon {
+  font-size: 48rpx;
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-size: 24rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 4rpx;
+}
+
+.video-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.video-title {
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 10rpx;
+  line-height: 1.4;
+}
+
+.video-progress-bar {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bg {
+  flex: 1;
+  height: 12rpx;
+  background-color: #f0f0f0;
+  border-radius: 6rpx;
+  overflow: hidden;
+  margin-right: 10rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #4ecdc4;
+  border-radius: 6rpx;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #999999;
+  width: 60rpx;
+  text-align: right;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 6rpx solid #f0f0f0;
+  border-top: 6rpx solid #4ecdc4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+  color: #999999;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 20rpx;
+}

@@ -1,0 +1,182 @@
+.container {
+  padding: 20px;
+}
+
+.title {
+  font-size: 28px;
+  color: #ff6b6b;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.summaryCard {
+  background-color: #fffacd;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 40px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.summaryItem {
+  text-align: center;
+}
+
+.summaryValue {
+  display: block;
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.summaryLabel {
+  display: block;
+  font-size: 18px;
+  color: #6c584c;
+  margin-top: 10px;
+}
+
+.progressSection {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  color: #4ecdc4;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #4ecdc4;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.progressBar {
+  width: 100%;
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff9b6b, #ff6b6b);
+  transition: width 0.5s ease;
+}
+
+.progressText {
+  font-size: 18px;
+  color: #292f36;
+  text-align: center;
+  font-weight: bold;
+}
+
+.achievementsList {
+  margin-bottom: 30px;
+}
+
+.achievementCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.achievementCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.unlocked {
+  border-left: 8px solid #28a745;
+}
+
+.locked {
+  border-left: 8px solid #6c757d;
+  opacity: 0.7;
+}
+
+.achievementIcon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.achievementInfo {
+  flex: 1;
+}
+
+.achievementName {
+  font-size: 20px;
+  font-weight: bold;
+  color: #292f36;
+  margin-bottom: 5px;
+}
+
+.achievementDescription {
+  font-size: 16px;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.unlockDate {
+  font-size: 14px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.achievementProgress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progressBarSmall {
+  flex: 1;
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progressFillSmall {
+  height: 100%;
+  background-color: #17a2b8;
+  transition: width 0.3s ease;
+}
+
+.progressTextSmall {
+  font-size: 14px;
+  color: #6c757d;
+  font-weight: bold;
+  min-width: 40px;
+}
+
+.homeButton {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 25px;
+  background-color: #ff6b6b;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.homeButton:hover {
+  background-color: #ee5a5a;
+  transform: translateY(-2px);
+}
