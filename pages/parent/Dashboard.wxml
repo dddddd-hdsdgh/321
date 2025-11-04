@@ -9,12 +9,15 @@
     </view>
   </view>
 
-  <!-- 孩子信息卡片 -->
+  <!-- 儿童切换和信息卡片 -->
   <view class="child-info-card">
     <view class="child-avatar">👨‍👩‍👧</view>
     <view class="child-details">
-      <view class="child-name">{{childInfo.name}}</view>
-      <view class="child-meta">{{childInfo.age}}岁 | {{childInfo.grade}}</view>
+      <view class="child-name">{{children[currentChildIndex].name}}</view>
+      <view class="child-meta">{{children[currentChildIndex].age}}岁 | {{children[currentChildIndex].grade}}</view>
+    </view>
+    <view class="child-switch-button" bindtap="toggleChildSelector">
+      <text>切换儿童 ⌵</text>
     </view>
   </view>
 
@@ -23,16 +26,41 @@
     <view class="stats-title">学习统计</view>
     <view class="stats-grid">
       <view class="stat-item">
-        <view class="stat-value">{{studyStats.totalStudyTime}}</view>
+        <view class="stat-value">{{children[currentChildIndex].studyStats.totalStudyTime}}</view>
         <view class="stat-label">总学习时长</view>
       </view>
       <view class="stat-item">
-        <view class="stat-value">{{studyStats.completedLessons}}</view>
+        <view class="stat-value">{{children[currentChildIndex].studyStats.completedLessons}}</view>
         <view class="stat-label">已完成课程</view>
       </view>
       <view class="stat-item">
-        <view class="stat-value">{{studyStats.currentStreak}}天</view>
+        <view class="stat-value">{{children[currentChildIndex].studyStats.currentStreak}}天</view>
         <view class="stat-label">连续学习</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 儿童选择器弹窗 -->
+  <view class="child-selector-mask" wx:if="{{showChildSelector}}" bindtap="toggleChildSelector"></view>
+  <view class="child-selector" wx:if="{{showChildSelector}}">
+    <view class="selector-header">
+      <text class="selector-title">选择孩子</text>
+      <view class="selector-close" bindtap="toggleChildSelector">×</view>
+    </view>
+    <view class="child-list">
+      <view 
+        class="child-item {{index === currentChildIndex ? 'active' : ''}}"
+        wx:for="{{children}}" 
+        wx:key="id"
+        data-index="{{index}}"
+        bindtap="selectChild"
+      >
+        <view class="child-item-avatar">👶</view>
+        <view class="child-item-info">
+          <view class="child-item-name">{{item.name}}</view>
+          <view class="child-item-meta">{{item.age}}岁 | {{item.grade}}</view>
+        </view>
+        <view class="child-item-check" wx:if="{{index === currentChildIndex}}">✓</view>
       </view>
     </view>
   </view>
@@ -48,6 +76,10 @@
       <view class="management-item" bindtap="goToStatistics">
         <view class="management-icon">📊</view>
         <view class="management-text">学习统计</view>
+      </view>
+      <view class="management-item" bindtap="manageChildren">
+        <view class="management-icon">👨‍👩‍👧‍👦</view>
+        <view class="management-text">儿童管理</view>
       </view>
       <view class="management-item" bindtap="goToParentSettings">
         <view class="management-icon">⚙️</view>

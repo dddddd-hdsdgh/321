@@ -22,7 +22,7 @@ export const bounceIn = {
     scale: 1,
     opacity: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 260,
       damping: 20
     }
@@ -35,7 +35,7 @@ export const playfulScale = {
   visible: {
     scale: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 10,
       duration: 0.6

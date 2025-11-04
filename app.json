@@ -9,6 +9,7 @@
     "pages/child/SentenceGarden",
     "pages/child/VideoLibrary",
     "pages/child/Settings",
+    "pages/child/Achievements",
     "pages/parent/Dashboard",
     "pages/parent/Courses",
     "pages/parent/Statistics",

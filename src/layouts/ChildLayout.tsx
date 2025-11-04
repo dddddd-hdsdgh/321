@@ -28,7 +28,7 @@ const ChildLayout: React.FC = () => {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 10
       }
@@ -90,10 +90,6 @@ const ChildLayout: React.FC = () => {
       <footer className={styles.footer}>
         {[
           { path: '/child', label: '首页' },
-          { path: '/child/pinyin-paradise', label: '拼音乐园' },
-          { path: '/child/hanzi-world', label: '汉字天地' },
-          { path: '/child/word-park', label: '词语乐园' },
-          { path: '/child/sentence-garden', label: '短句园地' },
           { path: '/child/achievements', label: '成就' },
           { path: '/child/settings', label: '设置' }
         ].map((item, index) => (

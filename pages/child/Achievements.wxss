@@ -1,0 +1,162 @@
+/* pages/child/Achievements.wxss */
+.achievements-container {
+  padding: 20rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+/* 页面标题栏 */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  margin-bottom: 30rpx;
+}
+
+.back-button {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-icon {
+  font-size: 40rpx;
+  color: #333333;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.placeholder {
+  width: 60rpx;
+}
+
+/* 成就统计卡片 */
+.achievement-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+
+.stat-card {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 30rpx 20rpx;
+  margin: 0 10rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ff6b6b;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+/* 成就列表区域 */
+.achievement-list-section {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* 成就项样式 */
+.achievement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  padding: 25rpx;
+  border-radius: 12rpx;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.achievement-item:active {
+  background-color: #f0f0f0;
+}
+
+.achievement-icon {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.achievement-icon-placeholder {
+  font-size: 48rpx;
+}
+
+.achievement-info {
+  flex: 1;
+}
+
+.achievement-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 5rpx;
+}
+
+.achievement-desc {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 5rpx;
+}
+
+.achievement-date {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.achievement-status {
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  background-color: #f0f0f0;
+}
+
+.status-text {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.status-text.unlocked {
+  color: #52c41a;
+}
+
+.status-text.locked {
+  color: #999999;
+}

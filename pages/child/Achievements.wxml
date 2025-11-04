@@ -1,0 +1,52 @@
+<!-- pages/child/Achievements.wxml -->
+<view class="achievements-container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <view class="back-button" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="page-title">我的成就</view>
+    <view class="placeholder"></view>
+  </view>
+
+  <!-- 成就统计 -->
+  <view class="achievement-stats">
+    <view class="stat-card">
+      <view class="stat-value">{{totalAchievements}}</view>
+      <view class="stat-label">成就总数</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-value">{{unlockedAchievements}}</view>
+      <view class="stat-label">已解锁</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-value">{{achievementProgress}}%</view>
+      <view class="stat-label">完成度</view>
+    </view>
+  </view>
+
+  <!-- 成就列表 -->
+  <view class="achievement-list-section">
+    <view class="section-header">
+      <text class="section-title">所有成就</text>
+    </view>
+    <view class="achievement-list">
+      <view class="achievement-item" 
+            wx:for="{{achievements}}" 
+            wx:key="id" 
+            style="opacity:{{item.unlocked ? '1' : '0.6'}};filter:{{item.unlocked ? 'none' : 'grayscale(100%)'}};">
+        <view class="achievement-icon">
+          <view class="achievement-icon-placeholder">{{item.unlocked ? '🏆' : '🔒'}}</view>
+        </view>
+        <view class="achievement-info">
+          <text class="achievement-title">{{item.title}}</text>
+          <text class="achievement-desc">{{item.description}}</text>
+          <text class="achievement-date" wx:if="{{item.unlocked && item.unlockDate}}">解锁时间: {{item.unlockDate}}</text>
+        </view>
+        <view class="achievement-status">
+          <text class="status-text {{item.unlocked ? 'unlocked' : 'locked'}}">{{item.unlocked ? '已解锁' : '未解锁'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

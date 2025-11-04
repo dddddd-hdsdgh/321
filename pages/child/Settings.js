@@ -18,7 +18,10 @@ Page({
       { value: 'medium', name: '中等' },
       { value: 'hard', name: '困难' }
     ],
-    userInfo: null
+    userInfo: null,
+    children: [],
+    currentChildIndex: 0,
+    showChildSelector: false
   },
 
   /**
@@ -26,7 +29,7 @@ Page({
    */
   onLoad(options) {
     this.loadSettings();
-    this.loadUserInfo();
+    this.loadChildrenInfo();
   },
 
   /**
@@ -34,6 +37,7 @@ Page({
    */
   onShow() {
     this.loadSettings();
+    this.loadChildrenInfo();
   },
 
   /**
@@ -52,6 +56,81 @@ Page({
   loadUserInfo() {
     const userInfo = app.globalData.userInfo || wx.getStorageSync('userInfo');
     this.setData({ userInfo });
+  },
+
+  /**
+   * 加载儿童信息列表
+   */
+  loadChildrenInfo() {
+    // 从缓存或全局数据获取儿童列表
+    let children = wx.getStorageSync('children') || [];
+    
+    // 如果没有儿童数据，使用默认数据
+    if (children.length === 0) {
+      children = [
+        {
+          id: '1',
+          name: '小明',
+          avatar: '👦',
+          grade: '一年级'
+        },
+        {
+          id: '2',
+          name: '小红',
+          avatar: '👧',
+          grade: '一年级'
+        }
+      ];
+      // 保存到缓存
+      wx.setStorageSync('children', children);
+    }
+    
+    // 获取当前选中的儿童索引
+    const currentChildIndex = wx.getStorageSync('currentChildIndex') || 0;
+    
+    this.setData({
+      children,
+      currentChildIndex
+    });
+    
+    // 设置当前用户信息
+    if (children.length > 0 && children[currentChildIndex]) {
+      this.setData({
+        userInfo: children[currentChildIndex]
+      });
+    }
+  },
+
+  /**
+   * 切换儿童选择器显示
+   */
+  toggleChildSelector() {
+    this.setData({
+      showChildSelector: !this.data.showChildSelector
+    });
+  },
+
+  /**
+   * 选择儿童
+   */
+  selectChild(e) {
+    const index = e.currentTarget.dataset.index;
+    const child = this.data.children[index];
+    
+    this.setData({
+      currentChildIndex: index,
+      userInfo: child,
+      showChildSelector: false
+    });
+    
+    // 保存当前选择到缓存
+    wx.setStorageSync('currentChildIndex', index);
+    
+    // 显示切换成功提示
+    wx.showToast({
+      title: `已切换到${child.name}`,
+      icon: 'success'
+    });
   },
 
   /**

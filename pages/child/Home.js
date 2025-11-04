@@ -36,11 +36,6 @@ Page({
         description: '趣味汉字学习，了解汉字起源和演变'
       },
       {
-        id: 'video-library',
-        title: '动画学习库',
-        description: '精选语文动画，边看边学'
-      },
-      {
         id: 'word-park',
         title: '词语乐园',
         description: '丰富的词语积累，提升表达能力'
@@ -75,15 +70,45 @@ Page({
 
   onLoad: function() {
     console.log('首页加载');
-    // 获取用户信息
-    this.setData({
-      userInfo: wx.getStorageSync('userInfo') || null
-    });
+    this.loadUserInfo();
   },
 
   onShow: function() {
     // 页面显示时刷新数据
     console.log('首页显示');
+    this.loadUserInfo();
+  },
+  
+  // 加载用户信息
+  loadUserInfo: function() {
+    // 从缓存获取儿童列表和当前选中索引，与设置页面保持一致
+    let children = wx.getStorageSync('children') || [];
+    const currentChildIndex = wx.getStorageSync('currentChildIndex') || 0;
+    
+    let userInfo = null;
+    
+    // 如果有儿童数据且存在当前选中的儿童，使用该儿童信息
+    if (children.length > 0 && children[currentChildIndex]) {
+      userInfo = children[currentChildIndex];
+    } 
+    // 如果没有儿童数据，创建默认儿童信息
+    else if (children.length === 0) {
+      // 创建默认儿童数据
+      children = [
+        {
+          id: '1',
+          name: '小明',
+          avatar: '👦',
+          grade: '一年级'
+        }
+      ];
+      wx.setStorageSync('children', children);
+      userInfo = children[0];
+    }
+    
+    this.setData({
+      userInfo: userInfo
+    });
   },
 
   // 跳转到推荐课程详情
@@ -101,7 +126,6 @@ Page({
     const pageMap = {
       'pinyin-paradise': 'PinyinParadise',
       'hanzi-world': 'HanziWorld',
-      'video-library': 'VideoLibrary',
       'word-park': 'WordPark',
       'sentence-garden': 'SentenceGarden'
     };

@@ -1,15 +1,15 @@
 <!--pages/child/Settings.wxml-->
 <view class="settings-container">
   <!-- 用户信息区域 -->
-  <view class="user-info-section">
+  <view class="user-info-section" bindtap="toggleChildSelector">
     <view class="user-avatar">
-      <view wx:if="{{userInfo && userInfo.avatarUrl}}" class="avatar-placeholder">👤</view>
-      <view wx:else class="avatar-placeholder">👧</view>
+      <view class="avatar-placeholder">{{userInfo && userInfo.avatar ? userInfo.avatar : '👧'}}</view>
     </view>
     <view class="user-details">
-      <view class="user-name">{{userInfo && userInfo.nickName ? userInfo.nickName : '小朋友'}}</view>
-      <view class="user-type">小学生用户</view>
+      <view class="user-name">{{userInfo && userInfo.name ? userInfo.name : '小朋友'}}</view>
+      <view class="user-type">{{userInfo && userInfo.grade ? userInfo.grade : '小学生用户'}} <text class="switch-hint">点击切换</text></view>
     </view>
+    <view class="user-arrow">›</view>
   </view>
 
   <!-- 学习设置区域 -->
@@ -95,5 +95,31 @@
   <!-- 版本信息 -->
   <view class="version-info">
     萌豆语文动画屋 v1.0.0
+  </view>
+</view>
+
+<!-- 儿童选择器弹窗 -->
+<view wx:if="{{showChildSelector}}" class="child-selector-mask">
+  <view class="child-selector">
+    <view class="selector-header">
+      <text class="selector-title">选择小朋友</text>
+      <view class="close-button" bindtap="toggleChildSelector">✕</view>
+    </view>
+    <view class="child-list">
+      <view 
+        wx:for="{{children}}" 
+        wx:key="id"
+        class="child-item {{currentChildIndex === index ? 'selected' : ''}}"
+        data-index="{{index}}"
+        bindtap="selectChild"
+      >
+        <view class="child-avatar">{{item.avatar}}</view>
+        <view class="child-info">
+          <view class="child-name">{{item.name}}</view>
+          <view class="child-grade">{{item.grade}}</view>
+        </view>
+        <view wx:if="{{currentChildIndex === index}}" class="selected-mark">✓</view>
+      </view>
+    </view>
   </view>
 </view>
