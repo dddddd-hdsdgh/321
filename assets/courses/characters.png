@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" fill="none">
+  <rect width="300" height="200" rx="8" fill="#b5ead7"/>
+  <rect x="20" y="20" width="260" height="160" rx="4" fill="#fff" fill-opacity="0.3"/>
+  <text x="150" y="70" text-anchor="middle" font-size="44" font-weight="bold" fill="#333">识字与写字</text>
+  <text x="150" y="120" text-anchor="middle" font-size="64" font-weight="bold" fill="#333">日 月 水 火</text>
+  <path d="M60 160H240" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+</svg>

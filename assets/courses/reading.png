@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" fill="none">
+  <rect width="300" height="200" rx="8" fill="#ffb8d1"/>
+  <rect x="20" y="20" width="260" height="160" rx="4" fill="#fff" fill-opacity="0.3"/>
+  <text x="150" y="70" text-anchor="middle" font-size="44" font-weight="bold" fill="#fff">阅读理解</text>
+  <path d="M70 90H230" stroke="#fff" stroke-width="3"/>
+  <path d="M70 110H210" stroke="#fff" stroke-width="3"/>
+  <path d="M70 130H190" stroke="#fff" stroke-width="3"/>
+  <path d="M70 150H170" stroke="#fff" stroke-width="3"/>
+</svg>

@@ -1,20 +1,38 @@
 /* pages/parent/Dashboard.wxss */
+/* 全局容器 */
 .parent-dashboard-container {
-  background-color: #f8f9fa;
+  padding: 0;
+  background-color: #f8f8f8;
   min-height: 100vh;
-  padding: 20rpx;
+  position: relative;
+  padding-bottom: 120rpx; /* 为底部操作栏留出空间 */
 }
 
-/* 顶部栏 */
+/* 头部栏 */
 .header {
-  background-color: #4ecdc4;
+  background: linear-gradient(135deg, #ff9966, #ff5e62);
+  padding: 30rpx 32rpx;
   color: white;
-  padding: 30rpx;
-  border-radius: 16rpx;
-  margin-bottom: 30rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom-left-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+  box-shadow: 0 4px 12px rgba(255, 153, 102, 0.4);
+  position: relative;
+  z-index: 10;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.header-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 16rpx;
 }
 
 .header-title {
@@ -22,28 +40,76 @@
   font-weight: bold;
 }
 
-.back-button {
+.header-right {
   display: flex;
   align-items: center;
+  gap: 30rpx;
+}
+
+.notification-icon,
+.parent-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 10rpx 20rpx;
-  border-radius: 20rpx;
-  font-size: 28rpx;
+  border-radius: 50%;
+  font-size: 32rpx;
 }
 
-.back-icon {
-  margin-right: 8rpx;
+/* 欢迎信息区域 */
+.welcome-section {
+  padding: 32rpx 32rpx 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* 孩子信息卡片 */
+.welcome-text {
+  flex: 1;
+}
+
+.greeting {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.welcome-subtitle {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}
+
+.date-display {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 儿童信息卡片 */
 .child-info-card {
+  margin: 20rpx 32rpx;
   background-color: white;
-  padding: 40rpx;
-  border-radius: 16rpx;
-  margin-bottom: 30rpx;
+  padding: 32rpx;
+  border-radius: 24rpx;
   display: flex;
   align-items: center;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.child-info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8rpx;
+  height: 100%;
+  background: linear-gradient(to bottom, #4ecdc4, #44a08d);
 }
 
 .child-avatar {
@@ -56,23 +122,304 @@
   justify-content: center;
   font-size: 60rpx;
   margin-right: 30rpx;
+  flex-shrink: 0;
 }
 
 .child-details {
   flex: 1;
 }
 
+.child-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.child-meta {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.child-status {
+  font-size: 24rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 16rpx;
+  display: inline-block;
+}
+
+.status-online {
+  background-color: #e8f5e9;
+  color: #4CAF50;
+}
+
+.status-offline {
+  background-color: #f5f5f5;
+  color: #999;
+}
+
 .child-switch-button {
-  padding: 12rpx 20rpx;
+  padding: 16rpx 28rpx;
   background-color: #f0f0f0;
-  border-radius: 8rpx;
+  border-radius: 12rpx;
   font-size: 28rpx;
   color: #666;
-  border: 1rpx solid #ddd;
+  margin-left: 20rpx;
+  flex-shrink: 0;
 }
 
 .child-switch-button:active {
   background-color: #e0e0e0;
+}
+
+/* 通用卡片样式 */
+.stats-card,
+.recent-studies-card,
+.management-section {
+  margin: 20rpx 32rpx;
+  background-color: white;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 通用区块标题 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  width: 40rpx;
+  height: 6rpx;
+  background-color: #4ecdc4;
+  position: absolute;
+  left: 0;
+  bottom: -12rpx;
+  border-radius: 3rpx;
+}
+
+.view-more {
+  font-size: 24rpx;
+  color: #4ecdc4;
+}
+
+/* 学习统计网格 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 24rpx;
+  border-radius: 16rpx;
+}
+
+.stat-icon {
+  width: 64rpx;
+  height: 64rpx;
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16rpx;
+  color: white;
+  font-size: 36rpx;
+}
+
+.stat-value {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 最近学习记录列表 */
+.recent-studies-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  min-height: 200rpx;
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200rpx;
+  color: #999;
+  font-size: 28rpx;
+  background-color: #fafafa;
+  border-radius: 12rpx;
+  margin-top: 20rpx;
+}
+
+.study-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.study-item:last-child {
+  border-bottom: none;
+}
+
+.study-icon {
+  width: 64rpx;
+  height: 64rpx;
+  background-color: #f0f8ff;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.study-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.study-title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.study-meta {
+  font-size: 24rpx;
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+}
+
+.study-status {
+  font-size: 24rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+  margin-left: 20rpx;
+}
+
+.study-status.completed {
+  background-color: #e8f5e9;
+  color: #4CAF50;
+}
+
+.study-status.in-progress {
+  background-color: #fff3e0;
+  color: #ff9800;
+}
+
+/* 管理功能区域 */
+.management-section .section-title {
+  margin-bottom: 32rpx;
+}
+
+.management-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 24rpx;
+}
+
+.management-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0;
+  transition: transform 0.2s;
+}
+
+.management-item:active {
+  transform: scale(0.95);
+}
+
+.management-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4px 8px rgba(78, 205, 196, 0.3);
+  font-size: 44rpx;
+  color: white;
+}
+
+.management-text {
+  font-size: 24rpx;
+  color: #333;
+  text-align: center;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 24rpx 32rpx;
+  border-top-left-radius: 32rpx;
+  border-top-right-radius: 32rpx;
+  z-index: 100;
+}
+
+.switch-to-child {
+  width: 100%;
+  height: 88rpx;
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  color: white;
+  border: none;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.4);
+}
+
+.switch-icon {
+  margin-right: 16rpx;
+  font-size: 36rpx;
+}
+
+.switch-to-child:active {
+  opacity: 0.9;
+  transform: translateY(2rpx);
 }
 
 /* 儿童选择器样式 */
@@ -84,26 +431,27 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
+  display: flex;
+  align-items: flex-end;
 }
 
 .child-selector {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #fff;
-  border-top-left-radius: 20rpx;
-  border-top-right-radius: 20rpx;
-  z-index: 1000;
+  background-color: white;
+  border-top-left-radius: 32rpx;
+  border-top-right-radius: 32rpx;
+  padding: 32rpx;
+  width: 100%;
   max-height: 80vh;
+  overflow-y: auto;
 }
 
 .selector-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24rpx;
+  padding-bottom: 24rpx;
   border-bottom: 1rpx solid #eee;
+  margin-bottom: 24rpx;
 }
 
 .selector-title {
@@ -122,36 +470,55 @@
   color: #666;
 }
 
+.add-child-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32rpx;
+  margin: 16rpx 0;
+  border-radius: 16rpx;
+  color: #4ecdc4;
+  border: 2rpx dashed #4ecdc4;
+}
+
+.add-icon {
+  font-size: 40rpx;
+  margin-right: 16rpx;
+}
+
+.add-text {
+  font-size: 28rpx;
+}
+
 .child-list {
-  padding: 20rpx;
-  max-height: 60vh;
-  overflow-y: auto;
+  margin-top: 16rpx;
 }
 
 .child-item {
   display: flex;
   align-items: center;
   padding: 24rpx;
-  border-radius: 12rpx;
-  margin-bottom: 16rpx;
-  background-color: #f9f9f9;
+  margin: 10rpx 0;
+  border-radius: 16rpx;
+  transition: background-color 0.2s;
 }
 
 .child-item.active {
-  background-color: #fff8e6;
-  border: 1rpx solid #ffcc00;
+  background-color: #f0f8ff;
+  color: #4ecdc4;
 }
 
 .child-item-avatar {
   width: 80rpx;
   height: 80rpx;
   border-radius: 40rpx;
-  background-color: #ffecd2;
+  background-color: #e0f7fa;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 40rpx;
-  margin-right: 20rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
 }
 
 .child-item-info {
@@ -162,7 +529,11 @@
   font-size: 32rpx;
   font-weight: bold;
   color: #333;
-  margin-bottom: 4rpx;
+  margin-bottom: 8rpx;
+}
+
+.child-item.active .child-item-name {
+  color: #4ecdc4;
 }
 
 .child-item-meta {
@@ -172,99 +543,29 @@
 
 .child-item-check {
   font-size: 36rpx;
-  color: #ffcc00;
-  font-weight: bold;
-}
-
-.child-name {
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 8rpx;
-}
-
-.child-meta {
-  font-size: 28rpx;
-  color: #666;
-}
-
-/* 学习统计卡片 */
-.stats-card {
-  background-color: white;
-  padding: 40rpx;
-  border-radius: 16rpx;
-  margin-bottom: 30rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
-}
-
-.stats-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 30rpx;
-}
-
-.stats-grid {
-  display: flex;
-  justify-content: space-between;
-}
-
-.stat-item {
-  flex: 1;
-  text-align: center;
-  padding: 20rpx;
-}
-
-.stat-value {
-  font-size: 40rpx;
-  font-weight: bold;
   color: #4ecdc4;
-  margin-bottom: 10rpx;
-}
-
-.stat-label {
-  font-size: 24rpx;
-  color: #666;
-}
-
-/* 管理功能区域 */
-.management-section {
-  background-color: white;
-  padding: 40rpx;
-  border-radius: 16rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
-}
-
-.section-title {
-  font-size: 32rpx;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 30rpx;
 }
 
-.management-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.management-item {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20rpx;
-  background-color: #f5f5f5;
-  border-radius: 12rpx;
-  margin-bottom: 20rpx;
-}
-
-.management-icon {
-  font-size: 60rpx;
-  margin-bottom: 15rpx;
-}
-
-.management-text {
-  font-size: 26rpx;
-  color: #333;
+/* 响应式调整 */
+@media (max-width: 320px) {
+  .stats-grid,
+  .management-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .child-info-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .child-avatar {
+    margin-bottom: 24rpx;
+  }
+  
+  .child-switch-button {
+    margin-left: 0;
+    margin-top: 20rpx;
+    align-self: flex-end;
+  }
 }

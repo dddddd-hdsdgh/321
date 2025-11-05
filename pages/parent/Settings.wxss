@@ -1,1 +1,240 @@
 /* pages/parent/Settings.wxss */
+
+/* 基础样式 */
+page {
+  background-color: #f5f5f5;
+  font-size: 16rpx;
+}
+
+/* 容器样式 */
+.settings-container {
+  min-height: 100vh;
+  padding-bottom: 80rpx;
+}
+
+/* 头部导航栏 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  background-color: #fff;
+  padding: 0 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.back-button {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.header-right {
+  width: 48rpx;
+}
+
+/* 设置菜单区域 */
+.settings-menu {
+  margin-top: 108rpx;
+  padding: 0 30rpx;
+}
+
+/* 菜单区块 */
+.menu-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+  padding: 0 10rpx;
+}
+
+/* 菜单卡片 */
+.menu-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 菜单项 */
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.menu-item:active {
+  background-color: #f8f8f8;
+}
+
+/* 菜单项分割线 */
+.menu-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 30rpx;
+  right: 30rpx;
+  height: 2rpx;
+  background-color: #f0f0f0;
+}
+
+/* 菜单左侧内容 */
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+/* 菜单图标 */
+.menu-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+}
+
+.menu-icon image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 不同图标背景色 */
+.child-icon {
+  background-color: #e6f7ff;
+}
+
+.time-icon {
+  background-color: #fff1f0;
+}
+
+.filter-icon {
+  background-color: #f6ffed;
+}
+
+.difficulty-icon {
+  background-color: #fff7e6;
+}
+
+.plan-icon {
+  background-color: #f9f0ff;
+}
+
+.notification-icon {
+  background-color: #fffbe6;
+}
+
+.profile-icon {
+  background-color: #e6f7ff;
+}
+
+.password-icon {
+  background-color: #f0f5ff;
+}
+
+.fingerprint-icon {
+  background-color: #f6ffed;
+}
+
+.about-icon {
+  background-color: #fff1f0;
+}
+
+.help-icon {
+  background-color: #f9f0ff;
+}
+
+.feedback-icon {
+  background-color: #fffbe6;
+}
+
+/* 菜单文字 */
+.menu-text {
+  font-size: 32rpx;
+  color: #333;
+}
+
+/* 菜单箭头 */
+.menu-arrow {
+  width: 24rpx;
+  height: 24rpx;
+  border-top: 3rpx solid #ccc;
+  border-right: 3rpx solid #ccc;
+  transform: rotate(45deg);
+}
+
+/* 开关样式 */
+switch {
+  transform: scale(0.9);
+}
+
+/* 退出登录区域 */
+.logout-section {
+  padding: 0 30rpx;
+  margin-top: 60rpx;
+}
+
+.logout-button {
+  width: 100%;
+  height: 96rpx;
+  background-color: #fff;
+  color: #ff6b6b;
+  font-size: 32rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button:active {
+  background-color: #f8f8f8;
+}
+
+/* 版本信息 */
+.version-info {
+  text-align: center;
+  margin-top: 60rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 响应式调整 */
+@media screen and (min-width: 768px) {
+  .settings-menu {
+    max-width: 600rpx;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .logout-section {
+    max-width: 600rpx;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

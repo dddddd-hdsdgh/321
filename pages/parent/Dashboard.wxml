@@ -1,42 +1,127 @@
-<!--pages/parent/Dashboard.wxml-->
+<!-- 家长仪表盘页面 -->
 <view class="parent-dashboard-container">
   <!-- 顶部栏 -->
   <view class="header">
-    <view class="header-title">家长管理中心</view>
-    <view class="back-button" bindtap="switchToChildMode">
-      <text class="back-icon">←</text>
-      <text>返回学习</text>
+    <view class="header-left">
+      <image class="header-icon" src="./../../images/icon.png" mode="aspectFit"></image>
+      <view class="header-title">萌豆语文动画屋</view>
+    </view>
+    <view class="header-right">
+      <view class="notification-icon" bindtap="showNotifications">🔔</view>
+      <view class="parent-avatar" bindtap="showUserMenu">👤</view>
     </view>
   </view>
 
-  <!-- 儿童切换和信息卡片 -->
+  <!-- 欢迎信息 -->
+  <view class="welcome-section">
+    <view class="welcome-text">
+      <text class="greeting">您好，家长</text>
+      <text class="welcome-subtitle">今天也是孩子进步的一天</text>
+    </view>
+    <view class="date-display">{{currentDate}}</view>
+  </view>
+
+  <!-- 儿童信息卡片 -->
   <view class="child-info-card">
-    <view class="child-avatar">👨‍👩‍👧</view>
+    <view class="child-avatar">{{children[currentChildIndex].avatar || '👨‍👩‍👧'}}</view>
     <view class="child-details">
       <view class="child-name">{{children[currentChildIndex].name}}</view>
       <view class="child-meta">{{children[currentChildIndex].age}}岁 | {{children[currentChildIndex].grade}}</view>
+      <view class="child-status {{children[currentChildIndex].status === 'online' ? 'status-online' : 'status-offline'}}">
+        {{children[currentChildIndex].status === 'online' ? '正在学习' : '离线'}}
+      </view>
     </view>
     <view class="child-switch-button" bindtap="toggleChildSelector">
-      <text>切换儿童 ⌵</text>
+      切换儿童 ⌵
     </view>
   </view>
 
   <!-- 学习统计卡片 -->
   <view class="stats-card">
-    <view class="stats-title">学习统计</view>
+    <view class="section-header">
+      <view class="section-title">学习统计</view>
+      <view class="view-more" bindtap="goToStatistics">查看全部 ></view>
+    </view>
     <view class="stats-grid">
       <view class="stat-item">
+        <view class="stat-icon">⏰</view>
         <view class="stat-value">{{children[currentChildIndex].studyStats.totalStudyTime}}</view>
         <view class="stat-label">总学习时长</view>
       </view>
       <view class="stat-item">
+        <view class="stat-icon">📚</view>
         <view class="stat-value">{{children[currentChildIndex].studyStats.completedLessons}}</view>
         <view class="stat-label">已完成课程</view>
       </view>
       <view class="stat-item">
+        <view class="stat-icon">🔥</view>
         <view class="stat-value">{{children[currentChildIndex].studyStats.currentStreak}}天</view>
         <view class="stat-label">连续学习</view>
       </view>
+      <view class="stat-item">
+        <view class="stat-icon">🏆</view>
+        <view class="stat-value">{{children[currentChildIndex].studyStats.achievements}}</view>
+        <view class="stat-label">获得成就</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最近学习记录 -->
+  <view class="recent-studies-card">
+    <view class="section-header">
+      <view class="section-title">最近学习</view>
+      <view class="view-more" bindtap="viewAllStudies">查看全部 ></view>
+    </view>
+    <view class="recent-studies-list">
+      <block wx:if="{{children[currentChildIndex].recentStudies.length > 0}}">
+        <view wx:for="{{children[currentChildIndex].recentStudies}}" wx:key="index" class="study-item">
+          <view class="study-icon">{{item.icon || '📖'}}</view>
+          <view class="study-details">
+            <view class="study-title">{{item.title}}</view>
+            <view class="study-meta">
+              <text>{{item.time}}</text>
+              <text>{{item.progress}}%</text>
+            </view>
+          </view>
+          <view class="study-status {{item.completed ? 'completed' : 'in-progress'}}">
+            {{item.completed ? '已完成' : '进行中'}}
+          </view>
+        </view>
+      </block>
+      <view wx:else class="empty-state">
+        暂无学习记录
+      </view>
+    </view>
+  </view>
+
+  <!-- 管理功能列表 -->
+  <view class="management-section">
+    <view class="section-title">家长功能</view>
+    <view class="management-grid">
+      <view class="management-item" bindtap="goToCourses">
+        <view class="management-icon">📚</view>
+        <view class="management-text">课程管理</view>
+      </view>
+      <view class="management-item" bindtap="goToStatistics">
+        <view class="management-icon">📊</view>
+        <view class="management-text">学习数据</view>
+      </view>
+      <view class="management-item" bindtap="manageChildren">
+        <view class="management-icon">👨‍👩‍👧‍👦</view>
+        <view class="management-text">儿童管理</view>
+      </view>
+      <view class="management-item" bindtap="goToParentSettings">
+        <view class="management-icon">⚙️</view>
+        <view class="management-text">我的设置</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="switch-to-child" bindtap="switchToChildMode">
+      <view class="switch-icon">👶</view>
+      <view class="switch-text">切换到儿童模式</view>
     </view>
   </view>
 
@@ -47,43 +132,26 @@
       <text class="selector-title">选择孩子</text>
       <view class="selector-close" bindtap="toggleChildSelector">×</view>
     </view>
-    <view class="child-list">
-      <view 
-        class="child-item {{index === currentChildIndex ? 'active' : ''}}"
-        wx:for="{{children}}" 
-        wx:key="id"
-        data-index="{{index}}"
-        bindtap="selectChild"
-      >
-        <view class="child-item-avatar">👶</view>
-        <view class="child-item-info">
-          <view class="child-item-name">{{item.name}}</view>
-          <view class="child-item-meta">{{item.age}}岁 | {{item.grade}}</view>
+    <view class="selector-content">
+      <view class="add-child-btn" bindtap="addNewChild">
+        <view class="add-icon">+</view>
+        <view class="add-text">添加孩子</view>
+      </view>
+      <view class="child-list">
+        <view 
+          class="child-item {{index === currentChildIndex ? 'active' : ''}}"
+          wx:for="{{children}}" 
+          wx:key="id"
+          data-index="{{index}}"
+          bindtap="selectChild"
+        >
+          <view class="child-item-avatar">{{index === 0 ? '👶' : '🧒'}}</view>
+          <view class="child-item-info">
+            <view class="child-item-name">{{item.name}}</view>
+            <view class="child-item-meta">{{item.age}}岁 | {{item.grade}}</view>
+          </view>
+          <view class="child-item-check" wx:if="{{index === currentChildIndex}}">✓</view>
         </view>
-        <view class="child-item-check" wx:if="{{index === currentChildIndex}}">✓</view>
-      </view>
-    </view>
-  </view>
-
-  <!-- 管理功能列表 -->
-  <view class="management-section">
-    <view class="section-title">管理功能</view>
-    <view class="management-grid">
-      <view class="management-item" bindtap="goToCourses">
-        <view class="management-icon">📚</view>
-        <view class="management-text">课程管理</view>
-      </view>
-      <view class="management-item" bindtap="goToStatistics">
-        <view class="management-icon">📊</view>
-        <view class="management-text">学习统计</view>
-      </view>
-      <view class="management-item" bindtap="manageChildren">
-        <view class="management-icon">👨‍👩‍👧‍👦</view>
-        <view class="management-text">儿童管理</view>
-      </view>
-      <view class="management-item" bindtap="goToParentSettings">
-        <view class="management-icon">⚙️</view>
-        <view class="management-text">家长设置</view>
       </view>
     </view>
   </view>

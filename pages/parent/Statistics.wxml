@@ -1,2 +1,140 @@
-<!--pages/parent/Statistics.wxml-->
-<text>pages/parent/Statistics.wxml</text>
+<!-- pages/parent/Statistics.wxml -->
+<view class="statistics-container">
+  <!-- 头部导航栏 -->
+  <view class="header">
+    <view class="back-button" bindtap="navigateBack">
+      <image src="/assets/icons/back.png" mode="aspectFit"></image>
+    </view>
+    <view class="header-title">学习统计</view>
+    <view class="header-right"></view>
+  </view>
+
+  <!-- 儿童选择器 -->
+  <view class="child-selector">
+    <view class="selector-title">选择孩子</view>
+    <picker bindchange="onChildChange" value="{{currentChildIndex}}" range="{{childrenNames}}" range-key="name">
+      <view class="picker-selected">{{children[currentChildIndex].name}}</view>
+    </picker>
+  </view>
+
+  <!-- 数据概览卡片 -->
+  <view class="overview-card">
+    <view class="overview-title">学习概览</view>
+    <view class="overview-stats">
+      <view class="overview-item">
+        <view class="overview-value">{{currentStats.totalStudyTime}}</view>
+        <view class="overview-label">总学习时长</view>
+      </view>
+      <view class="overview-item">
+        <view class="overview-value">{{currentStats.completedLessons}}</view>
+        <view class="overview-label">已完成课程</view>
+      </view>
+      <view class="overview-item">
+        <view class="overview-value">{{currentStats.averageScore}}分</view>
+        <view class="overview-label">平均得分</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习趋势图表 -->
+  <view class="chart-card">
+    <view class="chart-header">
+      <view class="chart-title">本周学习趋势</view>
+      <view class="chart-legend">
+        <view class="legend-item">
+          <view class="legend-color time-color"></view>
+          <view class="legend-text">学习时长</view>
+        </view>
+        <view class="legend-item">
+          <view class="legend-color courses-color"></view>
+          <view class="legend-text">完成课程</view>
+        </view>
+      </view>
+    </view>
+    <view class="chart-container">
+      <!-- 简化的图表表示，实际应用中应使用小程序图表组件 -->
+      <view class="chart-bars">
+        <view class="bar-group" wx:for="{{weekData}}" wx:key="index">
+          <view class="bar-time" style="height: {{item.timePercent}}%"></view>
+          <view class="bar-courses" style="height: {{item.coursesPercent}}%"></view>
+          <view class="bar-label">{{item.day}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习分析 -->
+  <view class="analysis-section">
+    <view class="section-header">
+      <view class="section-title">学习分析</view>
+      <view class="section-subtitle">基于最近学习数据</view>
+    </view>
+    
+    <!-- 学习时长分布 -->
+    <view class="analysis-card">
+      <view class="card-title">学习时长分布</view>
+      <view class="time-distribution">
+        <view class="distribution-item">
+          <view class="distribution-label">拼音学习</view>
+          <view class="distribution-bar">
+            <view class="distribution-fill" style="width: {{timeDistribution.pinyin}}%">
+              <view class="fill-text">{{timeDistribution.pinyin}}%</view>
+            </view>
+          </view>
+        </view>
+        <view class="distribution-item">
+          <view class="distribution-label">汉字学习</view>
+          <view class="distribution-bar">
+            <view class="distribution-fill" style="width: {{timeDistribution.hanzi}}%">
+              <view class="fill-text">{{timeDistribution.hanzi}}%</view>
+            </view>
+          </view>
+        </view>
+        <view class="distribution-item">
+          <view class="distribution-label">词语学习</view>
+          <view class="distribution-bar">
+            <view class="distribution-fill" style="width: {{timeDistribution.words}}%">
+              <view class="fill-text">{{timeDistribution.words}}%</view>
+            </view>
+          </view>
+        </view>
+        <view class="distribution-item">
+          <view class="distribution-label">阅读练习</view>
+          <view class="distribution-bar">
+            <view class="distribution-fill" style="width: {{timeDistribution.reading}}%">
+              <view class="fill-text">{{timeDistribution.reading}}%</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 学习成就 -->
+    <view class="analysis-card">
+      <view class="card-title">学习成就</view>
+      <view class="achievements-grid">
+        <view class="achievement-item" wx:for="{{achievements}}" wx:key="index">
+          <view class="achievement-icon {{item.achieved ? 'achieved' : 'locked'}}">
+            <image src="{{item.achieved ? item.icon : '/assets/icons/locked.png'}}" mode="aspectFit"></image>
+          </view>
+          <view class="achievement-name">{{item.name}}</view>
+          <view class="achievement-desc">{{item.description}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习建议 -->
+  <view class="suggestions-card">
+    <view class="card-title">学习建议</view>
+    <view class="suggestion-item" wx:for="{{suggestions}}" wx:key="index">
+      <view class="suggestion-icon">
+        <image src="/assets/icons/suggestion.png" mode="aspectFit"></image>
+      </view>
+      <view class="suggestion-text">{{item}}</view>
+    </view>
+  </view>
+
+  <!-- 底部间距 -->
+  <view class="bottom-space"></view>
+</view>
