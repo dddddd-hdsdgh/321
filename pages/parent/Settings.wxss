@@ -117,6 +117,7 @@ page {
   align-items: center;
   justify-content: center;
   margin-right: 24rpx;
+  font-size: 40rpx;
 }
 
 .menu-icon image {

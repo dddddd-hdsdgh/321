@@ -159,10 +159,8 @@ Page({
    * 添加新孩子
    */
   addNewChild() {
-    wx.showModal({
-      title: '添加孩子',
-      content: '功能开发中，敬请期待',
-      showCancel: false
+    wx.navigateTo({
+      url: '/pages/parent/ChildManagement?mode=add'
     });
   },
 
@@ -253,10 +251,8 @@ Page({
    * 管理儿童
    */
   manageChildren() {
-    // 这里可以跳转到儿童管理页面，或显示儿童管理弹窗
-    wx.showToast({
-      title: '儿童管理功能待实现',
-      icon: 'none'
+    wx.navigateTo({
+      url: '/pages/parent/ChildManagement'
     });
   },
 
@@ -277,7 +273,7 @@ Page({
       url: '/pages/parent/StudyRecords'
     });
   },
-
+  
   /**
    * 跳转到课程管理
    */

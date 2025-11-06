@@ -27,9 +27,7 @@
         
         <view class="menu-item" bindtap="goToStudyTimeSetting">
           <view class="menu-left">
-            <view class="menu-icon time-icon">
-              <image src="/assets/icons/time.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon time-icon">⏰</view>
             <view class="menu-text">学习时间管理</view>
           </view>
           <view class="menu-arrow"></view>
@@ -37,9 +35,7 @@
         
         <view class="menu-item" bindtap="goToContentFilter">
           <view class="menu-left">
-            <view class="menu-icon filter-icon">
-              <image src="/assets/icons/filter.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon filter-icon">🔍</view>
             <view class="menu-text">内容过滤</view>
           </view>
           <view class="menu-arrow"></view>
@@ -53,9 +49,7 @@
       <view class="menu-card">
         <view class="menu-item" bindtap="goToDifficultySetting">
           <view class="menu-left">
-            <view class="menu-icon difficulty-icon">
-              <image src="/assets/icons/difficulty.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon difficulty-icon">🎮</view>
             <view class="menu-text">学习难度</view>
           </view>
           <view class="menu-arrow"></view>
@@ -63,9 +57,7 @@
         
         <view class="menu-item" bindtap="goToLearningPlan">
           <view class="menu-left">
-            <view class="menu-icon plan-icon">
-              <image src="/assets/icons/plan.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon plan-icon">📅</view>
             <view class="menu-text">学习计划</view>
           </view>
           <view class="menu-arrow"></view>
@@ -73,9 +65,7 @@
         
         <view class="menu-item" bindtap="toggleNotification">
           <view class="menu-left">
-            <view class="menu-icon notification-icon">
-              <image src="/assets/icons/notification.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon notification-icon">🔔</view>
             <view class="menu-text">学习提醒</view>
           </view>
           <switch checked="{{notificationsEnabled}}" color="#ff9966" />
@@ -89,9 +79,7 @@
       <view class="menu-card">
         <view class="menu-item" bindtap="goToProfile">
           <view class="menu-left">
-            <view class="menu-icon profile-icon">
-              <image src="/assets/icons/profile.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon profile-icon">👤</view>
             <view class="menu-text">个人信息</view>
           </view>
           <view class="menu-arrow"></view>
@@ -99,9 +87,7 @@
         
         <view class="menu-item" bindtap="goToChangePassword">
           <view class="menu-left">
-            <view class="menu-icon password-icon">
-              <image src="/assets/icons/password.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon password-icon">🔒</view>
             <view class="menu-text">修改密码</view>
           </view>
           <view class="menu-arrow"></view>
@@ -109,9 +95,7 @@
         
         <view class="menu-item" bindtap="toggleFingerprint">
           <view class="menu-left">
-            <view class="menu-icon fingerprint-icon">
-              <image src="/assets/icons/fingerprint.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon fingerprint-icon">🖋️</view>
             <view class="menu-text">指纹登录</view>
           </view>
           <switch checked="{{fingerprintEnabled}}" color="#ff9966" />
@@ -125,9 +109,7 @@
       <view class="menu-card">
         <view class="menu-item" bindtap="goToAbout">
           <view class="menu-left">
-            <view class="menu-icon about-icon">
-              <image src="/assets/icons/about.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon about-icon">ℹ️</view>
             <view class="menu-text">关于我们</view>
           </view>
           <view class="menu-arrow"></view>
@@ -135,9 +117,7 @@
         
         <view class="menu-item" bindtap="goToHelp">
           <view class="menu-left">
-            <view class="menu-icon help-icon">
-              <image src="/assets/icons/help.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon help-icon">❓</view>
             <view class="menu-text">帮助中心</view>
           </view>
           <view class="menu-arrow"></view>
@@ -145,9 +125,7 @@
         
         <view class="menu-item" bindtap="goToFeedback">
           <view class="menu-left">
-            <view class="menu-icon feedback-icon">
-              <image src="/assets/icons/feedback.png" mode="aspectFit"></image>
-            </view>
+            <view class="menu-icon feedback-icon">💬</view>
             <view class="menu-text">意见反馈</view>
           </view>
           <view class="menu-arrow"></view>

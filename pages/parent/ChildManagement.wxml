@@ -1,0 +1,134 @@
+<!-- pages/parent/ChildManagement.wxml -->
+<view class="container">
+  <!-- 头部导航栏 -->
+  <view class="header">
+    <view class="back-button" bindtap="navigateBack">
+      <image src="/assets/icons/back.png" mode="aspectFit"></image>
+    </view>
+    <view class="header-title">儿童管理</view>
+    <view class="header-right"></view>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <view class="content">
+    <!-- 添加儿童按钮 -->
+    <view class="add-button" bindtap="openAddChildModal">
+      <view class="add-icon">+</view>
+      <view class="add-text">添加孩子</view>
+    </view>
+
+    <!-- 儿童列表 -->
+    <view class="children-list">
+      <view class="section-title">我的孩子</view>
+      
+      <!-- 空状态提示 -->
+      <view class="empty-state" wx:if="{{children.length === 0}}">
+        <image src="/assets/icons/children.png" mode="aspectFit" class="empty-icon"></image>
+        <view class="empty-text">还没有添加孩子</view>
+        <view class="empty-subtext">点击上方按钮添加孩子信息</view>
+      </view>
+      
+      <!-- 儿童列表 -->
+      <view wx:else>
+        <view class="child-item" wx:for="{{children}}" wx:key="id">
+          <view class="child-info">
+            <view class="child-avatar" style="font-size: 60rpx;">{{item.avatar}}</view>
+            <view class="child-details">
+              <view class="child-name">
+                {{item.name}}
+                <text wx:if="{{index === currentChildIndex}}" class="current-tag">当前</text>
+              </view>
+              <view class="child-meta">{{item.age}}岁 | {{item.grade}}</view>
+              <!-- 学习数据简要展示 -->
+              <view wx:if="{{item.stats}}" class="child-stats">
+                <text class="stat-item">{{item.stats.totalStudyTime || 0}}分钟</text>
+                <text class="stat-item">{{item.stats.completedLessons || 0}}节课</text>
+                <text class="stat-item">{{item.stats.achievements || 0}}个成就</text>
+              </view>
+            </view>
+          </view>
+          
+          <view class="child-actions">
+            <view class="action-button edit-btn" bindtap="openEditChildModal" data-index="{{index}}">
+              编辑
+            </view>
+            <view class="action-button delete-btn" bindtap="openDeleteConfirmModal" data-index="{{index}}">
+              删除
+            </view>
+            <view wx:if="{{index !== currentChildIndex}}" class="action-button set-btn" bindtap="setAsCurrentChild" data-index="{{index}}">
+              设为当前
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加儿童弹窗 -->
+  <view class="modal-mask" wx:if="{{showAddChildModal || showEditChildModal || showDeleteConfirmModal}}" bindtap="closeModal"></view>
+  
+  <!-- 添加/编辑儿童弹窗 -->
+  <view class="modal-content" wx:if="{{showAddChildModal || showEditChildModal}}">
+    <view class="modal-header">
+      <text class="modal-title">{{showAddChildModal ? '添加孩子' : '编辑孩子'}}</text>
+      <view class="modal-close" bindtap="closeModal">×</view>
+    </view>
+    
+    <view class="modal-body">
+      <!-- 姓名输入 -->
+      <view class="form-group">
+        <view class="form-label">姓名</view>
+        <input type="text" class="form-input" placeholder="请输入孩子姓名" value="{{childForm.name}}" bindinput="onInputChange" data-field="name"/>
+      </view>
+      
+      <!-- 年龄输入 -->
+      <view class="form-group">
+        <view class="form-label">年龄</view>
+        <input type="number" class="form-input" placeholder="3-15岁" value="{{childForm.age}}" bindinput="onInputChange" data-field="age"/>
+      </view>
+      
+      <!-- 年级选择 -->
+      <view class="form-group">
+        <view class="form-label">年级</view>
+        <picker bindchange="onInputChange" value="{{gradeOptions.indexOf(childForm.grade)}}" range="{{gradeOptions}}" data-field="grade">
+          <view class="picker">
+            {{childForm.grade}}
+            <view class="picker-arrow">▼</view>
+          </view>
+        </picker>
+      </view>
+      
+      <!-- 头像选择 -->
+      <view class="form-group">
+        <view class="form-label">头像</view>
+        <view class="avatar-options">
+          <view class="avatar-option {{childForm.avatar === option ? 'selected' : ''}}" wx:for="{{avatarOptions}}" wx:key="index" bindtap="selectAvatar" data-avatar="{{item}}">
+            {{item}}
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="modal-footer">
+      <view class="modal-button cancel-btn" bindtap="closeModal">取消</view>
+      <view class="modal-button confirm-btn" bindtap="{{showAddChildModal ? 'addChild' : 'editChild'}}">{{showAddChildModal ? '添加' : '保存'}}</view>
+    </view>
+  </view>
+
+  <!-- 删除确认弹窗 -->
+  <view class="modal-content small-modal" wx:if="{{showDeleteConfirmModal}}">
+    <view class="modal-header">
+      <text class="modal-title">确认删除</text>
+      <view class="modal-close" bindtap="closeModal">×</view>
+    </view>
+    
+    <view class="modal-body">
+      <view class="confirm-text">确定要删除这个孩子的信息吗？此操作无法撤销。</view>
+    </view>
+    
+    <view class="modal-footer">
+      <view class="modal-button cancel-btn" bindtap="closeModal">取消</view>
+      <view class="modal-button delete-confirm-btn" bindtap="deleteChild">删除</view>
+    </view>
+  </view>
+</view>
