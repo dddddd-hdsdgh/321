@@ -53,10 +53,30 @@ lerna-debug.log*
 # OS generated files
 Thumbs.db
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# WeChat Mini Program generated files
+miniprogram_npm/
+build/
 
 # Temporary files
 *.tmp
 *.temp
+tmp/
+temp/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# nyc test coverage
+.nyc_output
 
 # TypeScript
 *.tsbuildinfo

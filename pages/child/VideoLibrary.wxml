@@ -23,11 +23,13 @@
     <block wx:elif="{{videos.length > 0}}">
       <view wx:for="{{videos}}" wx:key="id" class="video-item" data-id="{{item.id}}" bindtap="playVideo">
         <view class="video-thumbnail">
+          <image src="{{item.thumbnail_url}}" mode="aspectFill"></image>
           <view class="play-icon">▶️</view>
           <view class="video-duration">{{item.duration}}</view>
         </view>
         <view class="video-info">
           <view class="video-title">{{item.title}}</view>
+          <view class="video-description">{{item.description}}</view>
           <view class="video-progress-bar">
             <view class="progress-bg">
               <view class="progress-fill" style="width: {{item.progress}}%"></view>

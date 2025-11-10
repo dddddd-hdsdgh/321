@@ -1,103 +1,192 @@
-# 萌豆语文动画屋 - 低龄儿童语文启蒙视频学习平台
+# 萌豆语文动画屋 - Supabase数据库配置指南
 
-## 项目简介
-萌豆语文动画屋是一款专为3-8岁低龄儿童设计的语文启蒙学习平台，结合趣味动画和轻互动体验，让孩子在愉悦的氛围中学习拼音、汉字和基础语文知识。同时为家长提供学习数据追踪和管理功能，实现科学育儿。
+## 项目概述
 
-## 技术栈
-- **前端框架**：Umi-App 4.x
-- **数据存储与用户管理**：Supabase
-- **数据可视化**：ECharts
-- **多端适配**：支持儿童端（平板/电视/手机）、家长端（手机/平板/网页）
+萌豆语文动画屋是一个专为儿童设计的语文学习微信小程序，采用游戏化的方式帮助儿童学习拼音、汉字、词语和句子。本项目使用Supabase作为后端数据库服务，提供用户管理、课程内容存储、学习记录追踪等功能。
 
-## 核心功能
+## Supabase配置步骤
 
-### 儿童端（趣味学习）
-- **拼音动画剧场**：通过可爱的拼音精灵IP，生动演绎拼音发音和拼读规则
-- **汉字动画绘本**：展示汉字从甲骨文到楷书的演变过程，帮助理解字形含义
-- **每日动画课表**：根据年龄段智能推荐学习内容，3-5岁侧重听读，6-8岁侧重读写
-- **成就系统**：通过勋章激励机制，增强学习动力和成就感
+### 1. 创建Supabase项目
 
-### 家长端（管理追踪）
-- **学习数据看板**：直观展示孩子的学习时长、完成情况和知识点掌握度
-- **个性化管理**：可设置学习时长限制、内容筛选和设备管理
-- **亲子互动指南**：根据学习内容推荐适合的亲子互动活动，促进家庭学习
-- **家庭相册**：安全存储亲子互动照片，记录成长瞬间
+1. 访问 [Supabase官网](https://supabase.io/) 并注册账号
+2. 点击「New Project」创建新项目
+3. 设置项目名称、数据库密码和区域
+4. 等待项目初始化完成（约2分钟）
 
-### 后台管理
-- **动画库管理**：支持动画视频和封面图批量上传，自动关联知识点标签
-- **互动任务配置**：可在动画播放进度中添加互动节点，设置触发条件与反馈内容
-- **用户管理**：管理家长账号、儿童档案和设备绑定信息
-- **数据统计**：查看平台活跃用户数、观看量和内容偏好等数据
+### 2. 导入数据库结构
 
-## 项目结构
+项目根目录下提供了完整的数据库结构文件 `supabase_schema.sql`，您可以通过以下方式导入：
 
-```
-src/
-├── layouts/         # 布局组件
-│   ├── ChildLayout.tsx    # 儿童端布局
-│   ├── ParentLayout.tsx   # 家长端布局
-│   ├── AdminLayout.tsx    # 后台布局
-│   └── styles/           # 布局样式
-├── pages/           # 页面组件
-│   ├── child/       # 儿童端页面
-│   ├── parent/      # 家长端页面
-│   ├── admin/       # 后台页面
-│   └── Login.tsx    # 登录页面
-├── components/      # 公共组件
-├── services/        # API服务
-└── utils/           # 工具函数
-```
+#### 方法一：使用Supabase SQL编辑器
 
-## 安装与运行
+1. 进入您的Supabase项目控制台
+2. 点击左侧菜单栏的「SQL Editor」
+3. 点击「New query」
+4. 复制 `supabase_schema.sql` 文件的全部内容到编辑器中
+5. 点击「Run」执行SQL脚本
 
-### 1. 安装依赖
+#### 方法二：使用命令行工具
+
+如果您已安装 [Supabase CLI](https://supabase.com/docs/reference/cli/overview)，可以使用以下命令：
+
 ```bash
-npm install
+supabase db push --db-url "postgresql://postgres:[YOUR_PASSWORD]@db.[YOUR_PROJECT_REF].supabase.co:5432/postgres"
 ```
 
-### 2. 开发模式运行
-```bash
-npm start
+### 3. 配置小程序连接信息
+
+1. 在Supabase项目控制台中，点击左侧菜单栏的「Project Settings」
+2. 选择「API」标签页
+3. 复制「Project URL」和「anon key」
+4. 打开小程序项目中的 `utils/supabase.js` 文件
+5. 将复制的URL和Key粘贴到以下位置：
+
+```javascript
+// utils/supabase.js
+const SUPABASE_URL = 'https://your-project-url.supabase.co';
+const SUPABASE_ANON_KEY = 'your-anon-key';
 ```
 
-### 3. 构建生产版本
-```bash
-npm run build
+### 4. 配置认证设置
+
+为了支持微信登录功能，需要在Supabase中配置微信作为OAuth提供商：
+
+1. 在Supabase项目控制台中，点击左侧菜单栏的「Authentication」
+2. 选择「Providers」标签页
+3. 启用「WeChat」选项
+4. 配置相应的AppID和AppSecret（需要您的微信小程序已在微信开放平台注册）
+
+### 5. 配置存储策略
+
+如果您需要使用Supabase Storage存储图片和视频等媒体文件：
+
+1. 在Supabase项目控制台中，点击左侧菜单栏的「Storage」
+2. 创建必要的存储桶（buckets）：
+   - `avatars` - 用于存储用户头像
+   - `course-videos` - 用于存储课程视频
+   - `thumbnails` - 用于存储缩略图
+3. 设置适当的访问策略，允许公共读取和认证用户写入
+
+## 数据库表结构说明
+
+本项目使用以下主要数据表：
+
+### 核心表
+
+1. **parents** - 家长用户信息表
+2. **children** - 儿童用户信息表
+3. **course_categories** - 课程分类表
+4. **courses** - 课程内容表
+5. **study_records** - 学习记录表
+6. **achievements** - 成就定义表
+7. **child_achievements** - 儿童成就解锁记录表
+8. **study_settings** - 学习设置表
+9. **favorites** - 收藏课程表
+10. **recommended_courses** - 推荐课程表
+
+### 视图
+
+1. **child_study_stats** - 儿童学习统计视图
+2. **daily_study_stats** - 每日学习统计视图
+
+详细表结构请参考 `supabase_schema.sql` 文件。
+
+## 使用说明
+
+### 初始化Supabase客户端
+
+小程序在 `app.js` 中初始化Supabase客户端，并将其添加到全局数据中，以便在各个页面中使用：
+
+```javascript
+// 获取全局Supabase实例
+const app = getApp();
+const supabase = app.globalData.supabase;
 ```
 
-### 4. 预览生产版本
-```bash
-npm run preview
+### 数据操作示例
+
+项目中提供了一组便捷的API函数，封装了常见的数据操作：
+
+```javascript
+// 导入所需的API模块
+const { courses, studyRecords, children } = require('../../utils/supabase');
+
+// 获取推荐课程示例
+async function loadRecommendedCourses() {
+  const { data, error } = await courses.getRecommendedCourses('daily', 5);
+  if (error) {
+    console.error('获取推荐课程失败:', error);
+    return;
+  }
+  console.log('推荐课程:', data);
+}
+
+// 创建学习记录示例
+async function createStudyRecord(childId, courseId) {
+  const { data, error } = await studyRecords.createStudyRecord({
+    child_id: childId,
+    course_id: courseId,
+    start_time: new Date(),
+    progress: 0
+  });
+  
+  if (error) {
+    console.error('创建学习记录失败:', error);
+    return null;
+  }
+  
+  return data;
+}
 ```
 
-## 环境配置
-项目使用Supabase进行数据存储和用户管理，请在项目根目录创建`.env.local`文件并配置以下环境变量：
+### 错误处理
 
+使用Supabase API时，应始终检查返回的错误对象：
+
+```javascript
+const { data, error } = await someSupabaseFunction();
+
+if (error) {
+  console.error('操作失败:', error);
+  wx.showToast({
+    title: '操作失败',
+    icon: 'none'
+  });
+  return;
+}
+
+// 处理数据
+handleData(data);
 ```
-# Supabase配置
-REACT_APP_SUPABASE_URL=your_supabase_url
-REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
 
-## 适配说明
-- **儿童端**：按钮尺寸≥3cm，间距≥1.5cm，支持触摸/遥控操作
-- **家长端**：响应式设计，适配手机、平板和网页
-- **电视端**：支持遥控器按键映射，优化大屏显示效果
+## 注意事项
 
-## 安全与隐私
-- 儿童信息通过Supabase字段级加密存储
-- 儿童录音仅用于实时比对，比对后自动删除
-- 家长可一键删除儿童所有学习数据
-- 无广告插入，屏蔽所有外部链接
+1. **安全性**：生产环境中，请确保正确配置Supabase的访问策略，避免敏感数据泄露
+2. **性能优化**：对于频繁访问的数据，可以使用小程序的本地存储进行缓存
+3. **网络错误**：实现网络错误重试机制，提高用户体验
+4. **数据备份**：定期备份Supabase数据库，确保数据安全
+5. **监控**：使用Supabase的日志功能监控API调用和性能
 
-## 开发规范
-- 组件命名使用PascalCase
-- CSS使用CSS Modules，文件命名为`ComponentName.module.css`
-- 路由使用懒加载，提升首屏加载速度
-- 代码提交前执行`npm run lint`检查代码规范
+## 故障排除
 
-## 贡献指南
-欢迎提交Issue和Pull Request！请确保代码符合项目的开发规范。
+### 连接问题
+
+- 检查 `SUPABASE_URL` 和 `SUPABASE_ANON_KEY` 是否正确配置
+- 确认网络连接正常
+- 检查Supabase项目状态是否正常
+
+### 认证问题
+
+- 确保微信小程序已在Supabase中正确配置
+- 检查微信登录返回的code是否有效
+- 查看认证日志了解详细错误信息
+
+### 数据操作问题
+
+- 确认用户对表有正确的访问权限
+- 检查SQL语句是否有语法错误
+- 查看Supabase控制台中的错误日志
 
 ## 许可证
-MIT
+
+本项目采用MIT许可证。详情请参阅LICENSE文件。

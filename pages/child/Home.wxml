@@ -3,14 +3,14 @@
   <!-- 用户信息区域 -->
   <view class="user-section">
     <view class="user-avatar">
-      <view class="avatar-placeholder">👶</view>
+      <view class="avatar-placeholder">{{userInfo ? userInfo.avatar : '👶'}}</view>
     </view>
     <view class="user-info">
       <text class="user-name">{{userInfo && userInfo.name ? userInfo.name : '小朋友'}}</text>
       <text class="welcome-text">欢迎来到语文动画屋！</text>
     </view>
     <view class="badge">
-      <text class="badge-text">Lv.{{userInfo && userInfo.level ? userInfo.level : 1}}</text>
+      <text class="badge-text">{{userInfo && userInfo.grade ? userInfo.grade : '一年级'}}</text>
     </view>
   </view>
 
@@ -23,13 +23,34 @@
         <text class="more-arrow">></text>
       </view>
     </view>
-    <view class="recommend-list">
+    
+    <!-- 加载中状态 -->
+    <view class="loading-container" wx:if="{{isLoading}}">
+      <text class="loading-text">加载中...</text>
+    </view>
+    
+    <!-- 错误提示 -->
+    <view class="error-container" wx:elif="{{error}}">
+      <text class="error-text">{{error}}</text>
+      <button class="retry-btn" bindtap="loadTodayRecommend">重新加载</button>
+    </view>
+    
+    <!-- 无数据状态 -->
+    <view class="empty-container" wx:elif="{{todayRecommend.length === 0 && !isLoading}}">
+      <image class="empty-image" src="/assets/icons/empty-courses.png" mode="aspectFit"></image>
+      <text class="empty-text">暂无推荐课程</text>
+    </view>
+    
+    <!-- 推荐课程列表 -->
+    <view class="recommend-list" wx:else>
       <view class="recommend-item" wx:for="{{todayRecommend}}" wx:key="id" data-id="{{item.id}}" data-type="{{item.type}}" bindtap="goToCourse">
-        <view class="course-cover-placeholder">{{item.type === 'video' ? '🎬' : item.type === 'story' ? '📚' : '🎮'}}</view>
+        <image class="course-cover" wx:if="{{item.cover_image}}" src="{{item.cover_image}}" mode="aspectFill"></image>
+        <view class="course-cover-placeholder" wx:else>{{item.difficulty === 'easy' ? '⭐' : item.difficulty === 'medium' ? '⭐⭐' : '⭐⭐⭐'}}</view>
         <view class="course-info">
           <text class="course-title">{{item.title}}</text>
+          <text class="course-description">{{item.description}}</text>
           <view class="course-meta">
-            <text class="course-duration">{{item.duration}}</text>
+            <text class="course-duration">{{item.total_duration}}分钟</text>
             <view class="progress-bar">
               <view class="progress-bg"></view>
               <view class="progress-fill" style="width:{{item.progress}}%"></view>
@@ -45,12 +66,12 @@
   <view class="section">
     <text class="section-title">学习乐园</text>
     <view class="feature-grid">
-      <view class="feature-item" wx:for="{{features}}" wx:key="id" data-id="{{item.id}}" bindtap="goToFeature">
+      <view class="feature-item" wx:for="{{functionModules}}" wx:key="id" data-id="{{item.id}}" bindtap="goToFeature">
         <view class="feature-icon">
-          <view class="icon-placeholder">{{item.id === 'pinyin-paradise' ? '🔤' : item.id === 'hanzi-world' ? '汉字' : item.id === 'video-library' ? '🎬' : item.id === 'sentence-garden' ? '💬' : '📝'}}</view>
+          <image class="feature-icon-img" wx:if="{{item.icon}}" src="{{item.icon}}" mode="aspectFit"></image>
+          <view class="icon-placeholder" wx:else>{{item.id === 'pinyin' ? '🔤' : item.id === 'hanzi' ? '汉字' : item.id === 'sentence' ? '💬' : '📝'}}</view>
         </view>
-        <text class="feature-title">{{item.title}}</text>
-        <text class="feature-desc">{{item.description}}</text>
+        <text class="feature-title">{{item.name}}</text>
       </view>
     </view>
   </view>
@@ -67,11 +88,13 @@
     <view class="achievement-list">
       <view class="achievement-item" wx:for="{{achievements}}" wx:key="id" style="opacity:{{item.unlocked ? '1' : '0.5'}};filter:{{item.unlocked ? 'none' : 'grayscale(100%)'}};">
         <view class="achievement-icon">
-          <view class="achievement-icon-placeholder">{{item.unlocked ? '🏆' : '🔒'}}</view>
+          <image class="achievement-icon-img" wx:if="{{item.icon}}" src="{{item.icon}}" mode="aspectFit"></image>
+          <view class="achievement-icon-placeholder" wx:else>{{item.unlocked ? '🏆' : '🔒'}}</view>
         </view>
         <view class="achievement-info">
-          <text class="achievement-title">{{item.title}}</text>
+          <text class="achievement-title">{{item.name}}</text>
           <text class="achievement-desc">{{item.description}}</text>
+          <text class="achievement-date" wx:if="{{item.unlocked_at}}">{{item.unlocked_at}}</text>
         </view>
         <view class="achievement-status">
           <text class="status-text">{{item.unlocked ? '已解锁' : '未解锁'}}</text>

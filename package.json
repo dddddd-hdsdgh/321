@@ -3,7 +3,7 @@
   "author": "张承东 <13434776+zhang-chengdong-nbplus@user.noreply.gitee.com>",
   "scripts": {},
   "dependencies": {
-    "@supabase/supabase-js": "^2.78.0"
-  },
-  "devDependencies": {}
+    "@supabase/supabase-js": "^2.78.0",
+    "supabase-wechat-stable-v2": "^2.2.0"
+  }
 }

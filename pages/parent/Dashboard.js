@@ -1,99 +1,108 @@
 // pages/parent/Dashboard.js
-Page({
+// 导入工具 - 微信小程序兼容版
+// 注意：移除了直接的Supabase依赖，使用模拟数据
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
+    // 模拟数据 - 孩子列表
     children: [
       {
         id: 'child1',
         name: '小明',
-        age: 8,
-        grade: '二年级',
-        status: 'online',
+        avatar: '👦',
+        grade: '一年级',
+        age: 6,
+        created_at: '2024-01-01',
         studyStats: {
-          totalStudyTime: '12.5小时',
-          completedLessons: 28,
-          currentStreak: 7,
-          achievements: 12
+          totalDays: 15,
+          totalHours: 7.5,
+          completedCourses: 8,
+          currentStreak: 7
         },
-        recentStudies: [
+        recentRecords: [
           {
-            title: '拼音声母学习 - b p m f',
-            time: '今天 10:30',
-            progress: 100,
-            completed: true
+            courseName: '声母韵母入门',
+            date: '今天',
+            duration: '20分钟',
+            progress: 75
           },
           {
-            title: '汉字故事 - 日',
-            time: '昨天 16:45',
-            progress: 100,
-            completed: true
-          },
-          {
-            title: '词语乐园 - 天气相关',
-            time: '昨天 15:20',
-            progress: 60,
-            completed: false
+            courseName: '常用汉字启蒙',
+            date: '今天',
+            duration: '15分钟',
+            progress: 40
           }
         ]
       },
       {
-        id: 'child2', 
+        id: 'child2',
         name: '小红',
-        age: 6,
-        grade: '一年级',
-        status: 'offline',
+        avatar: '👧',
+        grade: '二年级',
+        age: 7,
+        created_at: '2024-01-05',
         studyStats: {
-          totalStudyTime: '8.3小时',
-          completedLessons: 15,
-          currentStreak: 3,
-          achievements: 5
+          totalDays: 12,
+          totalHours: 6.2,
+          completedCourses: 6,
+          currentStreak: 5
         },
-        recentStudies: [
+        recentRecords: [
           {
-            title: '拼音小剧场 - 字母歌',
-            time: '今天 09:15',
-            progress: 100,
-            completed: true
+            courseName: '经典儿歌诵读',
+            date: '昨天',
+            duration: '10分钟',
+            progress: 100
           },
           {
-            title: '汉字故事 - 月',
-            time: '前天 14:30',
-            progress: 100,
-            completed: true
-          },
-          {
-            title: '拼音乐园 - a o e',
-            time: '前天 13:10',
-            progress: 100,
-            completed: true
+            courseName: '基础数学练习',
+            date: '昨天',
+            duration: '25分钟',
+            progress: 60
           }
         ]
       }
     ],
     currentChildIndex: 0,
+    selectedDate: '今日',
+    notificationCount: 2,
     showChildSelector: false,
-    currentDate: '',
-    showNotifications: false,
-    showUserMenu: false
+    isLoading: false, // 使用模拟数据，无需加载
+    error: null,
+    refreshing: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.loadChildrenInfo();
-    this.setCurrentDate();
+    console.log('Dashboard页面加载，使用模拟数据');
+    // 由于使用模拟数据，不需要异步初始化
+    this.setData({ isLoading: false });
+  },
+
+  // 初始化仪表盘数据（简化版）
+  initializeDashboard() {
+    console.log('初始化仪表盘，使用模拟数据');
+    // 由于使用模拟数据，这里只需更新状态
+    this.setData({ 
+      isLoading: false,
+      error: null
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.loadChildrenInfo();
-    this.setCurrentDate();
+    console.log('Dashboard页面显示，使用模拟数据');
+    // 由于使用模拟数据，不需要重新加载
+  },
+
+  // 加载儿童数据（简化版）
+  loadChildrenData() {
+    console.log('加载选中儿童数据');
+    // 模拟数据已在data中定义，不需要从Supabase获取
   },
 
   /**
@@ -113,16 +122,6 @@ Page({
   },
 
   /**
-   * 显示通知
-   */
-  showNotifications() {
-    wx.showToast({
-      title: '暂无新通知',
-      icon: 'none'
-    });
-  },
-
-  /**
    * 显示用户菜单
    */
   showUserMenu() {
@@ -134,6 +133,41 @@ Page({
         }
       }
     });
+  },
+
+  // 获取通知数量（简化版）
+  fetchNotifications() {
+    // 通知数量已在模拟数据中设置
+    console.log('获取通知数量');
+  },
+
+  // 格式化日期为相对时间（今天、昨天等）
+  formatDate(dateString) {
+    return dateString || new Date().toLocaleString('zh-CN');
+  },
+
+  // 格式化时长
+  formatDuration(minutes) {
+    if (!minutes) return '0分钟';
+    if (minutes < 60) {
+      return `${minutes}分钟`;
+    }
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return mins > 0 ? `${hours}小时${mins}分钟` : `${hours}小时`;
+  },
+
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    console.log('刷新数据');
+    this.setData({ refreshing: true });
+    // 模拟刷新延迟
+    setTimeout(() => {
+      console.log('数据刷新完成');
+      wx.showToast({ title: '数据已更新', icon: 'success', duration: 1500 });
+      wx.stopPullDownRefresh();
+      this.setData({ refreshing: false });
+    }, 500);
   },
 
   /**
@@ -165,17 +199,11 @@ Page({
   },
 
   /**
-   * 加载所有孩子信息
+   * 加载所有孩子信息（使用模拟数据）
    */
   loadChildrenInfo() {
-    // 从存储中获取孩子信息数组
-    const children = wx.getStorageSync('children') || this.data.children;
-    const currentChildIndex = wx.getStorageSync('currentChildIndex') || 0;
-    
-    this.setData({
-      children,
-      currentChildIndex
-    });
+    console.log('加载所有孩子信息');
+    // 模拟数据已在data中定义
   },
 
   /**
@@ -196,90 +224,52 @@ Page({
       currentChildIndex: index,
       showChildSelector: false
     });
-    
-    // 保存选择状态
-    wx.setStorageSync('currentChildIndex', index);
-    wx.setStorageSync('childInfo', this.data.children[index]);
+    console.log('切换儿童:', this.data.children[index].name);
+    // 由于使用模拟数据，不需要重新加载数据
   },
 
-  /**
-   * 获取当前选中的儿童信息
-   */
-  getCurrentChild() {
-    return this.data.children[this.data.currentChildIndex];
+  navigateToCourseCenter: function() {
+    wx.navigateTo({
+      url: '../course/CourseCenter'
+    });
+  },
+
+  navigateToStudyStats: function() {
+    // 传递当前选择的儿童ID到统计页面
+    const currentChild = this.data.children[this.data.currentChildIndex];
+    wx.navigateTo({
+      url: `../stats/StudyStats?childId=${currentChild.id}`
+    });
+  },
+
+  navigateToSettings: function() {
+    wx.navigateTo({
+      url: '../settings/Settings'
+    });
+  },
+
+  navigateToChildManagement: function() {
+    wx.navigateTo({
+      url: '../management/ChildManagement'
+    });
   },
 
   /**
    * 切换到儿童模式
    */
   switchToChildMode() {
-    // 确保当前选中儿童信息已保存
-    wx.setStorageSync('childInfo', this.getCurrentChild());
-    wx.showToast({
-      title: '切换到儿童模式',
-      icon: 'success',
-      duration: 1000,
-      success: () => {
-        setTimeout(() => {
-          wx.redirectTo({
-            url: '/pages/child/Home'
-          });
-        }, 1000);
-      }
-    });
-  },
-
-  /**
-   * 跳转到课程管理
-   */
-  goToCourses() {
-    wx.navigateTo({
-      url: '/pages/parent/Courses'
-    });
-  },
-
-  /**
-   * 跳转到统计页面
-   */
-  goToStatistics() {
-    wx.navigateTo({
-      url: '/pages/parent/Statistics'
-    });
-  },
-
-  /**
-   * 管理儿童
-   */
-  manageChildren() {
-    wx.navigateTo({
-      url: '/pages/parent/ChildManagement'
-    });
-  },
-
-  /**
-   * 跳转到家长设置
-   */
-  goToParentSettings() {
-    wx.navigateTo({
-      url: '/pages/parent/Settings'
-    });
-  },
-  
-  /**
-   * 查看所有学习记录
-   */
-  viewAllStudies() {
-    wx.navigateTo({
-      url: '/pages/parent/StudyRecords'
-    });
-  },
-  
-  /**
-   * 跳转到课程管理
-   */
-  goToCourses() {
-    wx.navigateTo({
-      url: '/pages/parent/Courses'
+    // 切换到儿童模式
+    // 获取全局应用实例
+    const app = getApp();
+    
+    // 设置当前选择的儿童ID到全局数据
+    const currentChild = this.data.children[this.data.currentChildIndex];
+    app.globalData.currentChildId = currentChild.id;
+    app.globalData.currentMode = 'child';
+    
+    // 跳转到儿童端首页
+    wx.switchTab({
+      url: '../../pages/child/Home'
     });
   }
 })
