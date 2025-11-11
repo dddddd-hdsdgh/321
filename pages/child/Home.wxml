@@ -17,7 +17,10 @@
   <!-- 今日推荐区域 -->
   <view class="section">
     <view class="section-header">
-      <text class="section-title">今日推荐</text>
+      <view class="section-title-with-icon">
+        <text class="section-icon">🌟</text>
+        <text class="section-title">今日推荐</text>
+      </view>
       <view class="section-more" bindtap="viewAllRecommend">
         <text>查看全部</text>
         <text class="more-arrow">></text>
@@ -64,14 +67,18 @@
 
   <!-- 功能模块区域 -->
   <view class="section">
-    <text class="section-title">学习乐园</text>
+    <view class="section-title-with-icon">
+      <text class="section-icon">🎮</text>
+      <text class="section-title">学习乐园</text>
+    </view>
     <view class="feature-grid">
       <view class="feature-item" wx:for="{{functionModules}}" wx:key="id" data-id="{{item.id}}" bindtap="goToFeature">
         <view class="feature-icon">
           <image class="feature-icon-img" wx:if="{{item.icon}}" src="{{item.icon}}" mode="aspectFit"></image>
-          <view class="icon-placeholder" wx:else>{{item.id === 'pinyin' ? '🔤' : item.id === 'hanzi' ? '汉字' : item.id === 'sentence' ? '💬' : '📝'}}</view>
+          <view class="icon-placeholder" wx:else>{{item.id === 'pinyin' ? '🔤' : item.id === 'hanzi' ? '📚' : item.id === 'sentence' ? '💬' : '📝'}}</view>
         </view>
         <text class="feature-title">{{item.name}}</text>
+        <text class="feature-desc" wx:if="{{item.desc}}">{{item.desc}}</text>
       </view>
     </view>
   </view>
@@ -79,7 +86,10 @@
   <!-- 成就展示区域 -->
   <view class="section">
     <view class="section-header">
-      <text class="section-title">我的成就</text>
+      <view class="section-title-with-icon">
+        <text class="section-icon">🏆</text>
+        <text class="section-title">我的成就</text>
+      </view>
       <view class="section-more" bindtap="goToAchievements">
         <text>查看全部</text>
         <text class="more-arrow">></text>

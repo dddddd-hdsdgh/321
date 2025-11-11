@@ -13,12 +13,12 @@ Page({
     isLoading: false,
     // 错误信息
     error: null,
-    // 重命名为functionModules
+    // 功能模块
     functionModules: [
-      { id: 'pinyin', name: '拼音乐园', icon: '/assets/icons/pinyin_master.png', page: 'PinyinParadise' },
-      { id: 'hanzi', name: '汉字世界', icon: '/assets/icons/hanzi_master.png', page: 'HanziWorld' },
-      { id: 'sentence', name: '句子花园', icon: '/assets/icons/continuous.png', page: 'SentenceGarden' },
-      { id: 'poetry', name: '唐诗宋词', icon: '/assets/icons/poetry.png', page: 'PoetryGarden' }
+      { id: 'pinyin', name: '拼音乐园', icon: '/assets/icons/pinyin_master.png', page: 'PinyinParadise', desc: '学习拼音基础' },
+      { id: 'hanzi', name: '汉字世界', icon: '/assets/icons/hanzi_master.png', page: 'HanziWorld', desc: '探索汉字奥秘' },
+      { id: 'sentence', name: '句子花园', icon: '/assets/icons/suggestion.png', page: 'SentenceGarden', desc: '句子练习乐园' },
+      { id: 'poetry', name: '唐诗宋词', icon: '/assets/courses/poetry.png', page: 'PoetryGarden', desc: '经典诗词欣赏' }
     ],
     // 模拟数据 - 成就列表
     achievements: [
